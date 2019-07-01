@@ -1,0 +1,16 @@
+index_Plain.html
+media/
+index.php
+CSS_Grid/
+JavaScript30/
+/html
+
+node_modules/
+.DS_Store
+haters
+
+
+dist/
+.cache/
+.vscode/
+PuppyLove/src/.env
