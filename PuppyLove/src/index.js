@@ -2,6 +2,7 @@ require('dotenv').config();
 const API_URL = 'https://api.rescuegroups.org/http/v2.json';
 
 // Get a list of all animals available for adoption
+// TODO: Given a Breed
 //*************************************************************************** */
 
 const searchAllAvailableParams = [
