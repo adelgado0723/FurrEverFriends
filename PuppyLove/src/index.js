@@ -207,18 +207,44 @@ findAnimalByIDJSON.then((processedResponse) => {
 
 // Fetch Address data given a zip code
 //*************************************************************************** */
-function getCoordinates(address){
-  fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+address+'&key='+process.env.GOOGLE_API_KEY)
+function getCoordinates(zip){
+  fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+zip+'&key='+process.env.GOOGLE_API_KEY)
     .then(response => {
-      console.log(response);
-      response.json(); 
-      console.log(response);
-    })
-    .then(data => {
-      const latitude = data.results.geometry.location.lat;
-      const longitude = data.results.geometry.location.lng; console.log(data);
-      console.log({latitude, longitude})
-    })
+      // console.log(response);
+      // response.json(); 
+      getJSON(response.url, function handleLocationResponse(err, data){
+        if (err !== null) {
+          console.error('Something went wrong: ' + err);
+        } else {
+          // console.log('Your query count: ' + data.query.count);
+          console.log(data.results[0]);
+          console.log(data.results[0].formatted_address);
+          const lat = data.results[0].geometry.location.lat;
+          const long= data.results[0].geometry.location.lng;
+          console.log(lat, long);
+        }
+      });
+
+    });
+  
 }
-getCoordinates(33018);
+getCoordinates(33012);
+//*************************************************************************** */
+
+// UTILITIES
+//*************************************************************************** */
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
 //*************************************************************************** */
