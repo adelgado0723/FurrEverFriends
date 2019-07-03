@@ -140,6 +140,7 @@ listSpeciesJSON.then((processedResponse) => {
 
 // Find a specific animal by ID
 //*************************************************************************** */
+function findAnimalByID() {
 const animalID = 68766;
 const findAnimalByIDParams = [
   {
@@ -200,5 +201,24 @@ findAnimalByIDJSON.then((processedResponse) => {
     console.log(JSON.stringify(processedResponse.data[id]));
   }
 });
+}
+//*************************************************************************** */
 
+
+// Fetch Address data given a zip code
+//*************************************************************************** */
+function getCoordinates(address){
+  fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+address+'&key='+process.env.GOOGLE_API_KEY)
+    .then(response => {
+      console.log(response);
+      response.json(); 
+      console.log(response);
+    })
+    .then(data => {
+      const latitude = data.results.geometry.location.lat;
+      const longitude = data.results.geometry.location.lng; console.log(data);
+      console.log({latitude, longitude})
+    })
+}
+getCoordinates(33018);
 //*************************************************************************** */
