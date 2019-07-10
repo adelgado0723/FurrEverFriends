@@ -217,18 +217,18 @@ function getCoordinates(zip){
           console.error('Something went wrong: ' + err);
         } else {
           // console.log('Your query count: ' + data.query.count);
-          console.log(data.results[0]);
-          console.log(data.results[0].formatted_address);
-          const lat = data.results[0].geometry.location.lat;
-          const long= data.results[0].geometry.location.lng;
-          console.log(lat, long);
+          // console.log(data.results[0]);
+          // console.log(data.results[0].formatted_address);
+          // const lat = data.results[0].geometry.location.lat;
+          // const long= data.results[0].geometry.location.lng;
+          // console.log(lat, long);
         }
       });
 
     });
   
 }
-getCoordinates(33012);
+// getCoordinates(33012);
 //*************************************************************************** */
 
 // UTILITIES
