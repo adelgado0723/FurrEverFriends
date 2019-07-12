@@ -1,16 +1,14 @@
-import React from "react";
-import Animal from "./Animal";
-let utils = require('./Utilities');
+import React from 'react';
+import Animal from './Animal';
+import getUtilities from './Utilities';
 
+const utils = getUtilities();
 
 class Results extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      animals: []
-    };
-  }
+  state = {
+    animals: [],
+    loading: true,
+  };
 
   componentDidMount() {
     const fetchAllAnimals = utils.fetchAnimals.bind(this);
@@ -18,19 +16,22 @@ class Results extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <h1> LOADING RESULTS... </h1>;
+    }
     const fetchedAnimals = [];
 
     for (let id in this.state.animals) {
       const animal = this.state.animals[id];
       fetchedAnimals.push(
-        <Animal 
-          name={animal.animalName} 
+        <Animal
+          name={animal.animalName}
           species={animal.animalSpecies}
-          breed={animal.animalBreed} 
-          media={animal.animalPictures} 
-          location={animal.location} 
-          key={animal.animalID} 
-          id={animal.animalID} 
+          breed={animal.animalBreed}
+          media={animal.animalPictures}
+          location={animal.location}
+          key={animal.animalID}
+          id={animal.animalID}
         />
       );
     }
@@ -42,7 +43,6 @@ class Results extends React.Component {
         {fetchedAnimals}
       </div>
     );
-
   }
 }
-export default Results
+export default Results;

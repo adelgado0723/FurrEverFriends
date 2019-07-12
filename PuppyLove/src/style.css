@@ -1,3 +1,113 @@
+:root {
+  --blue: #1b5299;
+  --light-blue: #9fc2cc;
+  --cream: #f1ecce;
+  --purple: #331832;
+  --light-purple: #694d75;
+}
+
+* {
+  box-sizing: border-box;
+}
 body {
-  background: lightblue;
+  background: var(--light-blue);
+  margin: 0;
+}
+header {
+  font-size: 4em;
+  text-align: center;
+  background-color: var(--purple);
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 100%;
+  /* height: 100%; */
+  /* position: fixed; */
+}
+
+header a {
+  color: var(--cream);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.site-wrap {
+  width: 85vw;
+  max-width: 1000px;
+  background: var(--light-purple);
+  color: var(--cream);
+  /* background: whitesmoke; */
+  border-radius: 25px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.animal {
+  /* background-color: var(--light-purple); */
+  background-color: whitesmoke;
+  color: var(--blue);
+  border: 5px solid var(--blue);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  justify-items: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 15px 0;
+  padding: 5px;
+  /* height: 20vh; */
+}
+.animal img {
+  /* width: 100px; */
+  max-height: 100px;
+
+  border-radius: 10px;
+}
+.app-root {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+.info {
+  float: left;
+  /* min-height: 100px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* border: 5px solid red; */
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.animal h1 {
+  white-space: nowrap;
+  font-weight: normal;
+  font-size: 30px;
+  overflow: hidden;
+  margin: 0;
+  /* border: 5px solid red; */
+}
+
+.animal h2 {
+  /* white-space: nowrap; */
+  font-weight: normal;
+  font-size: 20px;
+  margin: 0;
+  /* border: 5px solid red; */
+}
+.image-container {
+  /* clip-path: circle(50% at 50% 50%); */
+  border-radius: 20px;
+
+  /* min-height: 100px; */
+  width: 100%;
+  height: 100%;
+  float: left;
+  margin: 5px;
+  /* margin-right: 20px; */
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }

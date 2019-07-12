@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "@reach/router";
+import React from 'react';
+import { Link } from '@reach/router';
 
 class Animal extends React.Component {
   render() {
@@ -10,17 +10,16 @@ class Animal extends React.Component {
     }
 
     return (
-      <Link to={`/details/${id}`} className="animal" >
+      <Link to={`/details/${id}`} className="animal">
         <div className="image-container">
           <img src={thumbnail} alt={name} />
         </div>
         <div className="info">
           <h1>{name}</h1>
-          <h2>{`${species} - ${breed} - ${location.formattedAddress} `}</h2>
+          <h2>{`${species} - ${breed} - ${location.formattedAddress}`}</h2>
         </div>
       </Link>
     );
-
   }
 }
 
