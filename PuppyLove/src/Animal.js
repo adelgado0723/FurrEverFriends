@@ -6,7 +6,7 @@ class Animal extends React.Component {
     const { name, species, breed, media, location, id } = this.props;
     let thumbnail = {};
     if (media && media[0] && media[0].urlSecureThumbnail) {
-      thumbnail = media[0].urlSecureThumbnail;
+      thumbnail = media[0].large.url;
     }
 
     return (
