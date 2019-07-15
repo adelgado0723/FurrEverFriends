@@ -1,9 +1,11 @@
 require('dotenv').config();
 
+const API_URL = 'https://api.rescuegroups.org/http/v2.json';
 function getUtilities() {
-  const API_URL = 'https://api.rescuegroups.org/http/v2.json';
   const utilities = {
     fetchAnimals,
+    fetchSpecies,
+    fetchBreeds,
   };
 
   return utilities;
@@ -112,7 +114,7 @@ function getUtilities() {
         return processingPromise;
       })
       .then((processedResponse) => {
-        console.log(processedResponse);
+        // console.log(processedResponse);
         let animals;
         let promises = [];
         if (processedResponse && processedResponse.data) {
@@ -141,6 +143,7 @@ function getUtilities() {
 
         Promise.all(promises).then((values) => {
           this.setState({
+            // TODO: Set number of rows returned and num pages that produces
             animals,
             loading: false,
           }).catch((err) =>
@@ -152,5 +155,107 @@ function getUtilities() {
         return animals;
       });
   }
+  // Get list of available species
+  //*************************************************************************** */
+  function fetchSpecies() {
+    const speciesQueryConnection = {
+      apikey: process.env.API_KEY,
+      objectType: 'animalSpecies',
+      objectAction: 'publicList',
+    };
+
+    const listSpeciesPromise = fetch(API_URL, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(speciesQueryConnection),
+    });
+    const listSpeciesJSON = listSpeciesPromise.then((response) => {
+      const processingPromise = response.json();
+      // console.log(`In Processing: ${processingPromise}`);
+      return processingPromise;
+    });
+    listSpeciesJSON.then((processedResponse) => {
+      // Second then is to wait on the JSON parsing
+      let species = [];
+      if (processedResponse && processedResponse.data) {
+        for (let key in processedResponse.data) {
+          species.push(key);
+        }
+      }
+      this.setState({
+        species,
+        loading: false,
+      }).catch((err) =>
+        this.setState({
+          error: err,
+        })
+      );
+      // console.table(species);
+    });
+  }
+  //*************************************************************************** */
+  function fetchBreeds(species = '') {
+    // const species = 'Dog';
+    // console.log(species);
+    const breedQueryParams = [
+      {
+        fieldName: 'breedSpecies',
+        operation: 'equals',
+        criteria: species,
+      },
+    ];
+
+    const breedQueryConnection = {
+      apikey: process.env.API_KEY,
+      objectType: 'animalBreeds',
+      objectAction: 'publicSearch',
+      search: {
+        resultStart: '0',
+        resultLimit: '10',
+        resultSort: 'breedName',
+        resultOrder: 'asc',
+        calcFoundRows: 'Yes',
+        filters: breedQueryParams,
+        fields: ['breedName'],
+      },
+    };
+
+    const listBreedsPromise = fetch(API_URL, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(breedQueryConnection),
+    });
+    const listBreedsJSON = listBreedsPromise.then((response) => {
+      const processingPromise = response.json();
+      // console.log(`In Processing: ${processingPromise}`);
+      return processingPromise;
+    });
+    listBreedsJSON.then((processedResponse) => {
+      let breeds = [];
+      // console.log(processedResponse);
+      if (processedResponse && processedResponse.data) {
+        for (let key in processedResponse.data) {
+          if (species !== processedResponse.data[key].breedName) {
+            breeds.push(processedResponse.data[key].breedName);
+          }
+        }
+      }
+      this.setState({
+        breeds,
+      }).catch((err) =>
+        this.setState({
+          error: err,
+        })
+      );
+      console.log(breeds);
+    });
+  }
+  //*************************************************************************** */
 }
 export default getUtilities;

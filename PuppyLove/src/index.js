@@ -194,10 +194,10 @@ function findAnimalByID() {
   });
   findAnimalByIDJSON.then((processedResponse) => {
     // Second then is to wait on the JSON parsing
-    console.log(`Finding animal with ID=${animalID}: `);
+    // console.log(`Finding animal with ID=${animalID}: `);
     for (var id in processedResponse.data) {
       // console.table(processedResponse.data[id]);
-      console.log(JSON.stringify(processedResponse.data[id]));
+      // console.log(JSON.stringify(processedResponse.data[id]));
     }
   });
 }
@@ -216,7 +216,7 @@ function getCoordinates(zip) {
     // response.json();
     getJSON(response.url, function handleLocationResponse(err, data) {
       if (err !== null) {
-        console.error('Something went wrong: ' + err);
+        // console.error('Something went wrong: ' + err);
       } else {
         // console.log('Your query count: ' + data.query.count);
         // console.log(data.results[0]);

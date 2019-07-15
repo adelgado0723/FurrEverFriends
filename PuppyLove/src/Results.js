@@ -11,8 +11,16 @@ class Results extends React.Component {
   };
 
   componentDidMount() {
+    // const params = [
+    //   {
+    //     fieldName: 'animalBreed',
+    //     operation: 'equal',
+    //     criteria: 'English Bulldog',
+    //   },
+    // ];
     const fetchAllAnimals = utils.fetchAnimals.bind(this);
     fetchAllAnimals();
+    // fetchAllAnimals(params);
   }
 
   render() {
