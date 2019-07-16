@@ -158,6 +158,9 @@ function getUtilities() {
   // Get list of available species
   //*************************************************************************** */
   function fetchSpecies() {
+    console.log(
+      'in fetch Species ------------------------------------------------------------------- '
+    );
     const speciesQueryConnection = {
       apikey: process.env.API_KEY,
       objectType: 'animalSpecies',
@@ -174,7 +177,7 @@ function getUtilities() {
     });
     const listSpeciesJSON = listSpeciesPromise.then((response) => {
       const processingPromise = response.json();
-      // console.log(`In Processing: ${processingPromise}`);
+      console.log(`In Processing: ${processingPromise}`);
       return processingPromise;
     });
     listSpeciesJSON.then((processedResponse) => {
@@ -185,10 +188,19 @@ function getUtilities() {
           species.push(key);
         }
       }
-      this.setState({
-        species,
-        loading: false,
-      }).catch((err) =>
+
+      console.log('About to set state');
+      this.setState(
+        {
+          species,
+          loading: false,
+        },
+        () => {
+          console.log(
+            'done ------------------------------------------------------------------- '
+          );
+        }
+      ).catch((err) =>
         this.setState({
           error: err,
         })
@@ -199,7 +211,10 @@ function getUtilities() {
   //*************************************************************************** */
   function fetchBreeds(species = '') {
     // const species = 'Dog';
-    // console.log(species);
+    console.log('Inside fetch breeds');
+    if (!species) {
+      species = this.state.selectedSpecies;
+    }
     const breedQueryParams = [
       {
         fieldName: 'breedSpecies',
@@ -253,7 +268,7 @@ function getUtilities() {
           error: err,
         })
       );
-      console.log(breeds);
+      // console.log(breeds);
     });
   }
   //*************************************************************************** */

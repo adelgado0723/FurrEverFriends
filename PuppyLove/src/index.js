@@ -1,5 +1,15 @@
 require('dotenv').config();
+// import * as data from './US_ZIP_CODES.json';
 const API_URL = 'https://api.rescuegroups.org/http/v2.json';
+
+// TODO: Make this happen in the server
+// Fiddling with zip codes
+//*************************************************************************** */
+// function lookupZip(zip) {
+//   console.log(data);
+// }
+
+//*************************************************************************** */
 
 // Get a list of all animals available for adoption
 //*************************************************************************** */
@@ -248,3 +258,45 @@ var getJSON = function(url, callback) {
   xhr.send();
 };
 //*************************************************************************** */
+
+// Get list of available zip codes
+//*************************************************************************** */
+// const locationsQueryConnection = {
+//   apikey: process.env.API_KEY,
+//   objectType: 'locations',
+//   objectAction: 'publicSearch',
+//   search: {
+//     resultStart: '0',
+//     resultLimit: '100',
+//     resultSort: 'locationID',
+//     resultOrder: 'asc',
+//     filters: [
+//       {
+//         fieldName: 'locationID',
+//         operation: 'greaterthan',
+//         criteria: '0',
+//       },
+//     ],
+//     filterProcessing: '1',
+//     fields: ['locationID', 'locationName', 'locationUrl', 'locationAddress'],
+//   },
+// };
+
+// const listLocationsPromise = fetch(API_URL, {
+//   method: 'post',
+//   headers: {
+//     'Content-Type': 'application/json',
+//     Accept: 'application/json',
+//   },
+//   body: JSON.stringify(locationsQueryConnection),
+// });
+// const listLocationsJSON = listLocationsPromise.then((response) => {
+//   const processingPromise = response.json();
+//   // console.log(`In Processing: ${processingPromise}`);
+//   return processingPromise;
+// });
+// listLocationsJSON.then((processedResponse) => {
+//   // Second then is to wait on the JSON parsing
+//   console.log(`All Locations: ${JSON.stringify(processedResponse)}`);
+// });
+//*************************************************************************** *
