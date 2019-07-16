@@ -47,6 +47,7 @@ class App extends React.Component {
     });
   };
   handleLocationChange = (event) => {
+    console.log('In location change');
     this.setState({
       location: {
         formattedAddress: event.target.value,
