@@ -1,13 +1,15 @@
 require('dotenv').config();
 
-const API_URL = 'https://api.rescuegroups.org/http/v2.json';
 function getUtilities() {
   const utilities = {
     fetchAnimals,
     fetchSpecies,
     fetchBreeds,
+    createLocationObj,
+    API_URL,
   };
 
+  const API_URL = 'https://api.rescuegroups.org/http/v2.json';
   return utilities;
 
   // Fetch Address data given a zip code
@@ -58,16 +60,36 @@ function getUtilities() {
   //   sorted by animalID.
   //************************************************************************ */
   function fetchAnimals(params = [], fields = [], startingAnimal = '0') {
-    if (params.length === 0) {
-      params = [
-        {
-          fieldName: 'animalStatus',
-          operation: 'equal',
-          criteria: 'Available',
-        },
-      ];
-    }
+    //always looking for available animals
 
+    params.push({
+      fieldName: 'animalStatus',
+      operation: 'equal',
+      criteria: 'Available',
+    });
+    if (this.props.searchParams) {
+      if (this.props.searchParams.location) {
+        params.push({
+          fieldName: 'animalLocation',
+          operation: 'equal',
+          criteria: this.props.searchParams.location,
+        });
+      }
+      if (this.props.searchParams.selectedSpecies) {
+        params.push({
+          fieldName: 'animalSpecies',
+          operation: 'equal',
+          criteria: this.props.searchParams.selectedSpecies,
+        });
+        if (this.props.searchParams.breed) {
+          params.push({
+            fieldName: 'animalBreed',
+            operation: 'equal',
+            criteria: this.props.searchParams.breed,
+          });
+        }
+      }
+    }
     if (fields.length === 0) {
       fields = [
         'animalID',
@@ -101,6 +123,7 @@ function getUtilities() {
       },
     };
 
+    // console.table(params);
     fetch(API_URL, {
       method: 'post',
       headers: {
@@ -155,12 +178,12 @@ function getUtilities() {
         return animals;
       });
   }
+
+  //*************************************************************************** */
   // Get list of available species
+  // TODO: make only retrieve available animal species
   //*************************************************************************** */
   function fetchSpecies() {
-    console.log(
-      'in fetch Species ------------------------------------------------------------------- '
-    );
     const speciesQueryConnection = {
       apikey: process.env.API_KEY,
       objectType: 'animalSpecies',
@@ -177,7 +200,7 @@ function getUtilities() {
     });
     const listSpeciesJSON = listSpeciesPromise.then((response) => {
       const processingPromise = response.json();
-      console.log(`In Processing: ${processingPromise}`);
+      // console.log(`In Processing: ${processingPromise}`);
       return processingPromise;
     });
     listSpeciesJSON.then((processedResponse) => {
@@ -189,18 +212,10 @@ function getUtilities() {
         }
       }
 
-      console.log('About to set state');
-      this.setState(
-        {
-          species,
-          loading: false,
-        },
-        () => {
-          console.log(
-            'done ------------------------------------------------------------------- '
-          );
-        }
-      ).catch((err) =>
+      this.setState({
+        species,
+        // loading: false,
+      }).catch((err) =>
         this.setState({
           error: err,
         })
@@ -209,9 +224,11 @@ function getUtilities() {
     });
   }
   //*************************************************************************** */
+
+  // TODO: make only retrieve available animal breeds
+  //*************************************************************************** */
   function fetchBreeds(species = '') {
     // const species = 'Dog';
-    console.log('Inside fetch breeds');
     if (!species) {
       species = this.state.selectedSpecies;
     }

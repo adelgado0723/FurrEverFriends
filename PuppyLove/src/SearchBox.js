@@ -2,20 +2,21 @@ import React from 'react';
 import { Consumer } from './SearchContext';
 
 class Search extends React.Component {
-  test = () => {
-    console.log(this.state.species);
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    this.props.search();
   };
   render() {
     return (
       <Consumer>
         {(context) => (
           <div className="search-params">
-            <form>
+            <form onSubmit={this.handleFormSubmit}>
               <label htmlFor="location">
                 Location
                 <input
                   id="location"
-                  defaultValue={context.location.formattedAddress}
+                  defaultValue={context.location}
                   placeholder="Location"
                   onChange={context.handleLocationChange}
                 />
