@@ -1,15 +1,13 @@
 require('dotenv').config();
+const API_URL = 'https://api.rescuegroups.org/http/v2.json';
 
 function getUtilities() {
   const utilities = {
     fetchAnimals,
     fetchSpecies,
     fetchBreeds,
-    createLocationObj,
-    API_URL,
   };
 
-  const API_URL = 'https://api.rescuegroups.org/http/v2.json';
   return utilities;
 
   // Fetch Address data given a zip code

@@ -16,7 +16,7 @@ class Details extends React.Component {
         criteria: this.props.id,
       },
     ];
-
+    //TODO: Pass in necessary data to not have to make async call
     const fetchByID = utils.fetchAnimals.bind(this);
     fetchByID(params);
   }
