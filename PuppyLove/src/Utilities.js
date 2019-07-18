@@ -127,8 +127,8 @@ function getUtilities() {
     fetch(API_URL, {
       method: 'post',
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Content-Type': 'text/json',
+        Accept: 'text/json',
       },
       body: JSON.stringify(searchConnection),
     })
@@ -169,11 +169,7 @@ function getUtilities() {
             // TODO: Set number of rows returned and num pages that produces
             animals,
             loading: false,
-          }).catch((err) =>
-            this.setState({
-              error: err,
-            })
-          );
+          });
         });
         return animals;
       });
@@ -193,8 +189,8 @@ function getUtilities() {
     const listSpeciesPromise = fetch(API_URL, {
       method: 'post',
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Content-Type': 'text/json',
+        Accept: 'text/json',
       },
       body: JSON.stringify(speciesQueryConnection),
     });
@@ -215,11 +211,8 @@ function getUtilities() {
       this.setState({
         species,
         // loading: false,
-      }).catch((err) =>
-        this.setState({
-          error: err,
-        })
-      );
+      });
+
       // console.table(species);
     });
   }
@@ -258,8 +251,8 @@ function getUtilities() {
     const listBreedsPromise = fetch(API_URL, {
       method: 'post',
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Content-Type': 'text/json',
+        Accept: 'text/json',
       },
       body: JSON.stringify(breedQueryConnection),
     });
@@ -280,12 +273,7 @@ function getUtilities() {
       }
       this.setState({
         breeds,
-      }).catch((err) =>
-        this.setState({
-          error: err,
-        })
-      );
-      // console.log(breeds);
+      });
     });
   }
   //*************************************************************************** */

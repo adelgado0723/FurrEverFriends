@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBox from './SearchBox.js';
-import { navigate } from '@reach/router/lib/history';
+import { navigate } from '@reach/router';
 
 class Search extends React.Component {
   search() {
