@@ -3,6 +3,7 @@ import Animal from './Animal.js';
 import getUtilities from './Utilities.js';
 import SearchBox from './SearchBox.js';
 import { Consumer } from './SearchContext.js';
+import { thisExpression } from '@babel/types';
 // import { tsConstructSignatureDeclaration } from '@babel/types';
 
 require('dotenv').config();
@@ -11,9 +12,10 @@ const utils = getUtilities();
 class Results extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       animals: [],
-      loading: true,
+      loading: false,
     };
   }
   // TO get fetchAnimals function from context:
@@ -44,6 +46,10 @@ class Results extends React.Component {
         />
       );
     }
+    if (fetchedAnimals.length === 0) {
+      fetchedAnimals.push(<h1>No Results Found...</h1>);
+    }
+
     return (
       <div className="search">
         {/* <pre>

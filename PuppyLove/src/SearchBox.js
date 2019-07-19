@@ -1,9 +1,16 @@
 import React from 'react';
-import { Consumer } from './SearchContext';
+import { Provider, Consumer } from './SearchContext';
 
 class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    };
+  }
   handleFormSubmit = (event) => {
     event.preventDefault();
+    this.state.loading = true;
     this.props.search();
   };
   render() {

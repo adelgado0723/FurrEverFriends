@@ -59,118 +59,116 @@ function getUtilities() {
   //************************************************************************ */
   function fetchAnimals(params = [], fields = [], startingAnimal = '0') {
     //always looking for available animals
-
-    params.push({
-      fieldName: 'animalStatus',
-      operation: 'equal',
-      criteria: 'Available',
-    });
-    if (this.props.searchParams) {
-      if (this.props.searchParams.location) {
-        params.push({
-          fieldName: 'animalLocation',
-          operation: 'equal',
-          criteria: this.props.searchParams.location,
-        });
-      }
-      if (this.props.searchParams.selectedSpecies) {
-        params.push({
-          fieldName: 'animalSpecies',
-          operation: 'equal',
-          criteria: this.props.searchParams.selectedSpecies,
-        });
-        if (this.props.searchParams.breed) {
-          params.push({
-            fieldName: 'animalBreed',
-            operation: 'equal',
-            criteria: this.props.searchParams.breed,
-          });
-        }
-      }
-    }
-    if (fields.length === 0) {
-      fields = [
-        'animalID',
-        'animalOrgID',
-        'animalName',
-        'animalBreed',
-        'animalBirthdate',
-        'animalBirthdateExact',
-        'animalColor',
-        'animalLocation',
-        'animalSex',
-        'animalSpecies',
-        'animalSummary',
-        'animalPictures',
-        'animalVideos',
-        'animalVideoUrls',
-      ];
-    }
-    const searchConnection = {
-      apikey: process.env.API_KEY,
-      objectType: 'animals',
-      objectAction: 'publicSearch',
-      search: {
-        resultStart: startingAnimal,
-        resultLimit: '10',
-        resultSort: 'animalID',
-        resultOrder: 'asc',
-        calcFoundRows: 'Yes',
-        filters: params,
-        fields: fields,
-      },
-    };
-
-    // console.table(params);
-    fetch(API_URL, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'text/json',
-        Accept: 'text/json',
-      },
-      body: JSON.stringify(searchConnection),
-    })
-      .then((response) => {
-        const processingPromise = response.json();
-        return processingPromise;
-      })
-      .then((processedResponse) => {
-        // console.log(processedResponse);
-        let animals;
-        let promises = [];
-        if (processedResponse && processedResponse.data) {
-          animals = processedResponse.data;
-
-          // Collecting array of promises for each location request
-          for (let key in animals) {
-            const locationPromise = createLocationObj(animals[key]);
-            locationPromise.then((location) => {
-              animals[key].location = {
-                zip: location.address_components[0],
-                city: location.address_components[1],
-                county: location.address_components[2],
-                state: location.address_components[3],
-                country: location.address_components[4],
-                longitude: location.geometry.location.lng,
-                latitude: location.geometry.location.lat,
-                formattedAddress: location.formatted_address,
-              };
-            });
-            promises.push(locationPromise);
-          }
-        } else {
-          animals = {};
-        }
-
-        Promise.all(promises).then((values) => {
-          this.setState({
-            // TODO: Set number of rows returned and num pages that produces
-            animals,
-            loading: false,
-          });
-        });
-        return animals;
+    this.setState({ loading: true }, retrieve);
+    function retrieve() {
+      params.push({
+        fieldName: 'animalStatus',
+        operation: 'equal',
+        criteria: 'Available',
       });
+      if (this.props.searchParams) {
+        if (this.props.searchParams.location) {
+          params.push({
+            fieldName: 'animalLocation',
+            operation: 'equal',
+            criteria: this.props.searchParams.location,
+          });
+        }
+        if (this.props.searchParams.selectedSpecies) {
+          params.push({
+            fieldName: 'animalSpecies',
+            operation: 'equal',
+            criteria: this.props.searchParams.selectedSpecies,
+          });
+          if (this.props.searchParams.breed) {
+            params.push({
+              fieldName: 'animalBreed',
+              operation: 'equal',
+              criteria: this.props.searchParams.breed,
+            });
+          }
+        }
+      }
+      if (fields.length === 0) {
+        fields = [
+          'animalID',
+          'animalOrgID',
+          'animalName',
+          'animalBreed',
+          'animalBirthdate',
+          'animalBirthdateExact',
+          'animalColor',
+          'animalLocation',
+          'animalSex',
+          'animalSpecies',
+          'animalSummary',
+          'animalPictures',
+          'animalVideos',
+          'animalVideoUrls',
+        ];
+      }
+      const searchConnection = {
+        apikey: process.env.API_KEY,
+        objectType: 'animals',
+        objectAction: 'publicSearch',
+        search: {
+          resultStart: startingAnimal,
+          resultLimit: '10',
+          resultSort: 'animalID',
+          resultOrder: 'asc',
+          calcFoundRows: 'Yes',
+          filters: params,
+          fields: fields,
+        },
+      };
+      // console.table(params);
+      fetch(API_URL, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'text/json',
+          Accept: 'text/json',
+        },
+        body: JSON.stringify(searchConnection),
+      })
+        .then((response) => {
+          const processingPromise = response.json();
+          return processingPromise;
+        })
+        .then((processedResponse) => {
+          // console.log(processedResponse);
+          let animals;
+          let promises = [];
+          if (processedResponse && processedResponse.data) {
+            animals = processedResponse.data;
+            // Collecting array of promises for each location request
+            for (let key in animals) {
+              const locationPromise = createLocationObj(animals[key]);
+              locationPromise.then((location) => {
+                animals[key].location = {
+                  zip: location.address_components[0],
+                  city: location.address_components[1],
+                  county: location.address_components[2],
+                  state: location.address_components[3],
+                  country: location.address_components[4],
+                  longitude: location.geometry.location.lng,
+                  latitude: location.geometry.location.lat,
+                  formattedAddress: location.formatted_address,
+                };
+              });
+              promises.push(locationPromise);
+            }
+          } else {
+            animals = {};
+          }
+          Promise.all(promises).then((values) => {
+            this.setState({
+              // TODO: Set number of rows returned and num pages that produces
+              animals,
+              loading: false,
+            });
+          });
+        });
+    }
   }
 
   //*************************************************************************** */
