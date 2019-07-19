@@ -235,7 +235,7 @@ function getUtilities() {
       objectAction: 'publicSearch',
       search: {
         resultStart: '0',
-        resultLimit: '10',
+        resultLimit: '400',
         resultSort: 'breedName',
         resultOrder: 'asc',
         calcFoundRows: 'Yes',
