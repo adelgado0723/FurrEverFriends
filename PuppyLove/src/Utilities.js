@@ -125,8 +125,8 @@ function getUtilities() {
       fetch(API_URL, {
         method: 'post',
         headers: {
-          'Content-Type': 'text/json',
-          Accept: 'text/json',
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify(searchConnection),
       })
@@ -185,8 +185,8 @@ function getUtilities() {
     const listSpeciesPromise = fetch(API_URL, {
       method: 'post',
       headers: {
-        'Content-Type': 'text/json',
-        Accept: 'text/json',
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify(speciesQueryConnection),
     });
@@ -247,8 +247,8 @@ function getUtilities() {
     const listBreedsPromise = fetch(API_URL, {
       method: 'post',
       headers: {
-        'Content-Type': 'text/json',
-        Accept: 'text/json',
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify(breedQueryConnection),
     });

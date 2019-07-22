@@ -10,7 +10,7 @@ class Animal extends React.Component {
     }
 
     return (
-      <Link to={`/details/${id}`} className="animal">
+      <Link to={`/details/${id}`} state={this.props} className="animal">
         <div className="image-container">
           <img src={thumbnail} alt={name} />
         </div>

@@ -1,34 +1,14 @@
 import React from 'react';
 import Carousel from './Carousel.js';
-import getUtilities from './Utilities';
-
-const utils = getUtilities();
+import AnimalMap from './AnimalMap.js';
 
 class Details extends React.Component {
-  state = {
-    loading: true,
-  };
-  componentDidMount() {
-    const params = [
-      {
-        fieldName: 'animalID',
-        operation: 'equal',
-        criteria: this.props.id,
-      },
-    ];
-    //TODO: Pass in necessary data to not have to make async call
-    const fetchByID = utils.fetchAnimals.bind(this);
-    fetchByID(params);
-  }
   render() {
-    if (this.state.loading) {
-      return <h1> LOADING DETAILS... </h1>;
-    }
-    const animal = this.state.animals[this.props.id];
-    // console.log(animal);
     return (
       <div className="details">
-        <Carousel media={animal.animalPictures} />
+        <h1>{this.props.location.state.name}</h1>
+        <Carousel media={this.props.location.state.media} />
+        <AnimalMap location={this.props.location.state.media} />
       </div>
     );
   }
