@@ -35,41 +35,37 @@ class AnimalMap extends React.Component {
   };
 
   render() {
-    const style = {
-      width: '200px',
-      height: '300px',
-      // marginLeft: 'auto',
-      // marginRight: 'auto',
-    };
     return (
-      <Map
-        item
-        xs={12}
-        style={style}
-        google={this.props.google}
-        onCLick={this.onMapClick}
-        zoom={14}
-        initialCenter={{
-          lat: this.props.location.latitude,
-          lng: this.props.location.longitude,
-        }}
-      >
-        <Marker
-          onClick={this.onMarkerClick}
-          title={'Animal Location'}
-          position={{
+      <div className="map-container">
+        <Map
+          // item
+          xs={12}
+          google={this.props.google}
+          onCLick={this.onMapClick}
+          zoom={5}
+          initialCenter={{
             lat: this.props.location.latitude,
             lng: this.props.location.longitude,
           }}
-          name={'Animal Location'}
-        />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
+          // style={style}
         >
-          <div className="map-container">TESTING MAP DIV INSIDE INFOWINDOW</div>
-        </InfoWindow>
-      </Map>
+          <Marker
+            onClick={this.onMarkerClick}
+            title={'Animal Location'}
+            position={{
+              lat: this.props.location.latitude,
+              lng: this.props.location.longitude,
+            }}
+            name={'Animal Location'}
+          />
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+          >
+            <div>TESTING MAP DIV INSIDE INFOWINDOW</div>
+          </InfoWindow>
+        </Map>
+      </div>
       // <div className="map">
       //   <h2>Location:</h2>
       //   <div className="map-container">

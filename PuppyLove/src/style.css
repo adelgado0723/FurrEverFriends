@@ -1,22 +1,30 @@
 :root {
-  --blue: #1b5299;
-  --light-blue: #9fc2cc;
-  --cream: #f1ecce;
-  --purple: #331832;
-  --light-purple: #694d75;
+  /* scheme 2 */
+  /* HSL */
+  /* --dark-blue: hsla(203%, 30%, 26%, 1);
+  --blue: hsla(206%, 46%, 37%, 1);
+  --light-blue: hsla(201%, 51%, 69%, 1);
+  --yellow: hsla(39%, 92%, 57%, 1);
+  --orange: hsla(21%, 89%, 52%, 1); */
+
+  --dark-blue: rgba(47, 72, 88, 1);
+  --blue: rgba(51, 101, 138, 1);
+  --light-blue: rgba(134, 187, 216, 1);
+  --yellow: rgba(246, 174, 45, 1);
+  --orange: rgba(242, 100, 25, 1);
 }
 
 * {
   box-sizing: border-box;
 }
 body {
-  background: var(--light-blue);
+  background: var(--orange);
   margin: 0;
 }
 header {
   font-size: 4em;
   text-align: center;
-  background-color: var(--purple);
+  background-color: var(--dark-blue);
   margin-bottom: 20px;
   padding: 20px;
   width: 100%;
@@ -25,16 +33,16 @@ header {
 }
 
 header a {
-  color: var(--cream);
+  color: var(--yellow);
   font-weight: bold;
   text-decoration: none;
 }
 
 .site-wrap {
-  width: 85vw;
+  width: 85%;
   max-width: 1000px;
-  background: var(--light-purple);
-  color: var(--cream);
+  background: whitesmoke;
+  color: black;
   /* background: whitesmoke; */
   border-radius: 25px;
   padding: 25px;
@@ -42,11 +50,12 @@ header a {
 }
 
 .animal {
-  /* background-color: var(--light-purple); */
-  background-color: whitesmoke;
-  color: var(--blue);
-  border: 5px solid var(--blue);
-  border-radius: 5px;
+  background-color: var(--blue);
+  /* background-color: whitesmoke; */
+
+  color: var(--yellow);
+  border: 5px solid var(--yellow);
+  border-radius: 10px;
   width: 100%;
   height: 100%;
   display: grid;
@@ -55,7 +64,7 @@ header a {
   align-items: center;
   overflow: hidden;
   margin: 15px 0;
-  padding: 5px;
+  padding: 15px;
   /* height: 20vh; */
 }
 .animal img {
@@ -117,5 +126,13 @@ header a {
   width: 200px;
   height: 400px;
   color: black;
-  background-color: var(--cream);
+  /* background-color: var(--cream); */
+  position: relative;
+}
+.details {
+  /* width: 100%; */
+  /* height: 100%; */
+  display: flex;
+  justify-items: space-around;
+  align-items: space-between;
 }

@@ -35,6 +35,7 @@ class Results extends React.Component {
     for (let id in this.state.animals) {
       const animal = this.state.animals[id];
       fetchedAnimals.push(
+        // TODO: add more fields like: description, sex, primary breed (instead of breed)...
         <Animal
           name={animal.animalName}
           species={animal.animalSpecies}
@@ -54,6 +55,7 @@ class Results extends React.Component {
       <div className="search">
         {/* <pre>
           <code>{JSON.stringify(this.state, null, 2)}</code>
+          className="map-container"
         </pre> */}
         <SearchBox search={this.fetchAnimals} />
 

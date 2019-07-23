@@ -57,7 +57,7 @@ function getUtilities() {
   // - Defaults to returning the first 10 animals availabe for adoption
   //   sorted by animalID.
   //************************************************************************ */
-  function fetchAnimals(params = [], fields = [], startingAnimal = '0') {
+  function fetchAnimals(params = [], startingAnimal = '0') {
     //always looking for available animals
     this.setState({ loading: true }, retrieve);
     function retrieve() {
@@ -89,24 +89,57 @@ function getUtilities() {
           }
         }
       }
-      if (fields.length === 0) {
-        fields = [
-          'animalID',
-          'animalOrgID',
-          'animalName',
-          'animalBreed',
-          'animalBirthdate',
-          'animalBirthdateExact',
-          'animalColor',
-          'animalLocation',
-          'animalSex',
-          'animalSpecies',
-          'animalSummary',
-          'animalPictures',
-          'animalVideos',
-          'animalVideoUrls',
-        ];
-      }
+      const fields = [
+        'animalAvailableDate',
+        'animalBirthdate',
+        'animalBirthdateExact',
+        'animalBreed',
+        'animalColor',
+        'animalDescription',
+        'animalDescriptionPlain',
+        'animalGeneralAge',
+        'animalGeneralSizePotential',
+        'animalGroomingNeeds',
+        'animalHousetrained',
+        'animalID',
+        'animalKillDate',
+        'animalKillReason',
+        'animalLocation',
+        'animalLocationCitystate',
+        'animalLocationDistance',
+        'animalName',
+        'animalNeedsFoster',
+        'animalOKWithAdults',
+        'animalOKWithCats',
+        'animalOKWithDogs',
+        'animalOKWithKids',
+        'animalOrgID',
+        'animalPictures',
+        'animalPrimaryBreed',
+        'animalRescueID',
+        'animalSex',
+        'animalSpecialNeeds',
+        'animalSpecialNeedsDescription',
+        'animalSpecies',
+        'animalSummary',
+        'animalSummary',
+        'animalVideos',
+        'animalVideoUrls',
+        'fosterEmail',
+        'fosterFirstname',
+        'fosterLastname',
+        'fosterName',
+        'fosterPhoneCell',
+        'fosterPhoneHome',
+        'locationAddress',
+        'locationCity',
+        'locationCountry',
+        'locationName',
+        'locationPhone',
+        'locationPostalCode',
+        'locationState',
+        'locationUrl',
+      ];
       const searchConnection = {
         apikey: process.env.API_KEY,
         objectType: 'animals',
@@ -142,6 +175,7 @@ function getUtilities() {
             animals = processedResponse.data;
             // Collecting array of promises for each location request
             for (let key in animals) {
+              //TODO: Make this async call in the Details path to get coords for map
               const locationPromise = createLocationObj(animals[key]);
               locationPromise.then((location) => {
                 animals[key].location = {

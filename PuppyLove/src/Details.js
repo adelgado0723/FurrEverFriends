@@ -8,7 +8,10 @@ class Details extends React.Component {
       <div className="details">
         <h1>{this.props.location.state.name}</h1>
         <Carousel media={this.props.location.state.media} />
-        <AnimalMap location={this.props.location.state.media} />
+        <AnimalMap location={this.props.location.state.location} />
+        <h1>{this.props.location.state.name}</h1>
+        <h1>{this.props.location.state.name}</h1>
+        <h1>{this.props.location.state.name}</h1>
       </div>
     );
   }
