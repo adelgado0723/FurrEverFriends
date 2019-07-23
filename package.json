@@ -10,7 +10,9 @@
     "test:watch": "jest --watch",
     "format": "prettier --write \"PuppyLove/src/**/*.{js,jsx}\"",
     "lint": "eslint \"PuppyLove/src/**/*.{js,jsx}\" --quiet",
-    "dev": "parcel PuppyLove/src/index.html"
+    "dev": "parcel PuppyLove/src/index.html",
+    "build": "parcel build PuppyLove/src/index.html"
+
   },
   "jest": {
     "transformIgnorePatterns": [
