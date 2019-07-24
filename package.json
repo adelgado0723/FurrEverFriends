@@ -12,7 +12,6 @@
     "lint": "eslint \"PuppyLove/src/**/*.{js,jsx}\" --quiet",
     "dev": "parcel PuppyLove/src/index.html",
     "build": "parcel build PuppyLove/src/index.html"
-
   },
   "jest": {
     "transformIgnorePatterns": [
@@ -55,6 +54,7 @@
     "@reach/router": "^1.2.1",
     "emotion": "^10.0.9",
     "google-maps-react": "^2.0.2",
+    "html-to-react": "^1.3.4",
     "petfinder-client": "^1.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

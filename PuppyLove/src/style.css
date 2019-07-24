@@ -18,13 +18,13 @@
   box-sizing: border-box;
 }
 body {
-  background: var(--orange);
+  background: var(--light-blue);
   margin: 0;
 }
 header {
   font-size: 4em;
   text-align: center;
-  background-color: var(--dark-blue);
+  background-color: var(--blue);
   margin-bottom: 20px;
   padding: 20px;
   width: 100%;
@@ -48,11 +48,16 @@ header a {
   padding: 25px;
   margin-bottom: 20px;
 }
+.animal:hover {
+  background-color: var(--dark-blue);
+  color: var(--orange);
 
+  border: 5px solid var(--orange);
+}
 .animal {
   background-color: var(--blue);
   /* background-color: whitesmoke; */
-
+  transition: all ease-in-out 200ms;
   color: var(--yellow);
   border: 5px solid var(--yellow);
   border-radius: 10px;
@@ -135,4 +140,33 @@ header a {
   display: flex;
   justify-items: space-around;
   align-items: space-between;
+}
+#modal {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal:empty {
+  display: none;
+}
+
+#modal > div {
+  background-color: white;
+  max-width: 500px;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#modal .buttons button {
+  display: inline-block;
+  margin-right: 15px;
 }

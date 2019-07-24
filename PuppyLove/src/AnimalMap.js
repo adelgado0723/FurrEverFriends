@@ -9,11 +9,6 @@ class AnimalMap extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      // center: {
-      //   lat: this.props.location.latitude,
-      //   lng: this.props.location.longitude,
-      // },
-      // zoom: 11,
     };
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
@@ -66,22 +61,6 @@ class AnimalMap extends React.Component {
           </InfoWindow>
         </Map>
       </div>
-      // <div className="map">
-      //   <h2>Location:</h2>
-      //   <div className="map-container">
-      //     <GoogleMapReact
-      //       bootstrapURLKeys={{ key: process.env.GOOGLE_API_KEY }}
-      //       defaultCenter={this.state.center}
-      //       defaultZoom={this.state.zoom}
-      //     >
-      //       <AnyReactComponent
-      //         lat={this.state.center.lat}
-      //         lng={this.state.center.lng}
-      //         text="test"
-      //       />
-      //     </GoogleMapReact>
-      //   </div>
-      // </div>
     );
   }
 }

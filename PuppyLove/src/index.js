@@ -2,7 +2,6 @@ require('dotenv').config();
 // import * as data from './US_ZIP_CODES.json';
 const API_URL = 'https://api.rescuegroups.org/http/v2.json';
 
-// TODO: Make this happen in the server
 // Fiddling with zip codes
 //*************************************************************************** */
 // function lookupZip(zip) {
@@ -300,3 +299,27 @@ var getJSON = function(url, callback) {
 //   console.log(`All Locations: ${JSON.stringify(processedResponse)}`);
 // });
 //*************************************************************************** *
+function defineObject(object = 'animals') {
+  const searchConnection = {
+    apikey: process.env.API_KEY,
+    objectType: object,
+    objectAction: 'define',
+  };
+  // console.table(params);
+  fetch(API_URL, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(searchConnection),
+  })
+    .then((response) => {
+      const processingPromise = response.json();
+      return processingPromise;
+    })
+    .then((processedResponse) => {
+      console.log(processedResponse);
+    });
+}
+defineObject();

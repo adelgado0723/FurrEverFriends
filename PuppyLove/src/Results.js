@@ -3,8 +3,6 @@ import Animal from './Animal.js';
 import getUtilities from './Utilities.js';
 import SearchBox from './SearchBox.js';
 import { Consumer } from './SearchContext.js';
-import { thisExpression } from '@babel/types';
-// import { tsConstructSignatureDeclaration } from '@babel/types';
 
 require('dotenv').config();
 const utils = getUtilities();
@@ -16,10 +14,10 @@ class Results extends React.Component {
     this.state = {
       animals: [],
       loading: false,
+      numAnimals: 0,
+      numPages: 0,
     };
   }
-  // TO get fetchAnimals function from context:
-  // fetchAnimals = this.props.searchParams.fetchAnimals.bind(this);
   fetchAnimals = utils.fetchAnimals.bind(this);
 
   componentDidMount() {
@@ -44,22 +42,22 @@ class Results extends React.Component {
           location={animal.location}
           key={animal.animalID}
           id={animal.animalID}
+          description={animal.animalDescription}
         />
       );
     }
-    if (fetchedAnimals.length === 0) {
-      fetchedAnimals.push(<h1>No Results Found...</h1>);
-    }
+    // if (this.state.numAnimals === 0) {
+    //   fetchedAnimals.push(<h1>No Results Found...</h1>);
+    // }
 
     return (
       <div className="search">
         {/* <pre>
-          <code>{JSON.stringify(this.state, null, 2)}</code>
-          className="map-container"
+          <code>{JSON.stringify(this.state.animals, null, 2)}</code>
         </pre> */}
         <SearchBox search={this.fetchAnimals} />
 
-        {fetchedAnimals}
+        {this.state.numAnimals ? fetchedAnimals : <h1>No Results Found...</h1>}
       </div>
     );
   }

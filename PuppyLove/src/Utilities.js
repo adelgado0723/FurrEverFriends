@@ -57,10 +57,11 @@ function getUtilities() {
   // - Defaults to returning the first 10 animals availabe for adoption
   //   sorted by animalID.
   //************************************************************************ */
-  function fetchAnimals(params = [], startingAnimal = '0') {
+  function fetchAnimals(startingAnimal = '0', resultLimit = '10') {
     //always looking for available animals
     this.setState({ loading: true }, retrieve);
     function retrieve() {
+      let params = [];
       params.push({
         fieldName: 'animalStatus',
         operation: 'equal',
@@ -90,55 +91,23 @@ function getUtilities() {
         }
       }
       const fields = [
-        'animalAvailableDate',
         'animalBirthdate',
-        'animalBirthdateExact',
         'animalBreed',
         'animalColor',
         'animalDescription',
-        'animalDescriptionPlain',
         'animalGeneralAge',
         'animalGeneralSizePotential',
-        'animalGroomingNeeds',
         'animalHousetrained',
         'animalID',
-        'animalKillDate',
-        'animalKillReason',
-        'animalLocation',
         'animalLocationCitystate',
-        'animalLocationDistance',
+        'animalLocationCoordinates',
+        'animalLocationState',
         'animalName',
-        'animalNeedsFoster',
-        'animalOKWithAdults',
-        'animalOKWithCats',
-        'animalOKWithDogs',
-        'animalOKWithKids',
-        'animalOrgID',
         'animalPictures',
         'animalPrimaryBreed',
-        'animalRescueID',
         'animalSex',
-        'animalSpecialNeeds',
-        'animalSpecialNeedsDescription',
+        // 'animalSizeCurrent',
         'animalSpecies',
-        'animalSummary',
-        'animalSummary',
-        'animalVideos',
-        'animalVideoUrls',
-        'fosterEmail',
-        'fosterFirstname',
-        'fosterLastname',
-        'fosterName',
-        'fosterPhoneCell',
-        'fosterPhoneHome',
-        'locationAddress',
-        'locationCity',
-        'locationCountry',
-        'locationName',
-        'locationPhone',
-        'locationPostalCode',
-        'locationState',
-        'locationUrl',
       ];
       const searchConnection = {
         apikey: process.env.API_KEY,
@@ -168,38 +137,33 @@ function getUtilities() {
           return processingPromise;
         })
         .then((processedResponse) => {
-          // console.log(processedResponse);
+          console.log(processedResponse);
           let animals;
-          let promises = [];
+          let numAnimals = 0;
+          let numPages = 0;
           if (processedResponse && processedResponse.data) {
+            numAnimals = processedResponse.foundRows;
             animals = processedResponse.data;
-            // Collecting array of promises for each location request
+            numPages = Math.ceil(numAnimals / parseInt(resultLimit, 10));
             for (let key in animals) {
-              //TODO: Make this async call in the Details path to get coords for map
-              const locationPromise = createLocationObj(animals[key]);
-              locationPromise.then((location) => {
-                animals[key].location = {
-                  zip: location.address_components[0],
-                  city: location.address_components[1],
-                  county: location.address_components[2],
-                  state: location.address_components[3],
-                  country: location.address_components[4],
-                  longitude: location.geometry.location.lng,
-                  latitude: location.geometry.location.lat,
-                  formattedAddress: location.formatted_address,
-                };
-              });
-              promises.push(locationPromise);
+              const coords = animals[key].animalLocationCoordinates.split(',');
+              animals[key].location = {
+                zip: animals[key].animalLocation,
+                state: animals[key].animalLocationState,
+                longitude: coords[1],
+                latitude: coords[0],
+                formattedAddress: animals[key].animalLocationCitystate,
+              };
             }
           } else {
             animals = {};
           }
-          Promise.all(promises).then((values) => {
-            this.setState({
-              // TODO: Set number of rows returned and num pages that produces
-              animals,
-              loading: false,
-            });
+          console.log(numPages);
+          this.setState({
+            animals,
+            loading: false,
+            numAnimals,
+            numPages,
           });
         });
     }
@@ -306,6 +270,33 @@ function getUtilities() {
       });
     });
   }
+  //*************************************************************************** */
+
+  //************************************************************************ */
+  function defineObject(object = 'animals') {
+    const searchConnection = {
+      apikey: process.env.API_KEY,
+      objectType: object,
+      objectAction: 'define',
+    };
+    // console.table(params);
+    fetch(API_URL, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(searchConnection),
+    })
+      .then((response) => {
+        const processingPromise = response.json();
+        return processingPromise;
+      })
+      .then((processedResponse) => {
+        console.log(processedResponse);
+      });
+  }
+
   //*************************************************************************** */
 }
 export default getUtilities;
