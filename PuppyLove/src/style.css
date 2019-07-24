@@ -39,13 +39,13 @@ header a {
 }
 
 .site-wrap {
-  width: 85%;
+  width: 90vw;
   max-width: 1000px;
   background: whitesmoke;
   color: black;
   /* background: whitesmoke; */
   border-radius: 25px;
-  padding: 25px;
+  padding: 35px;
   margin-bottom: 20px;
 }
 .animal:hover {
@@ -57,7 +57,7 @@ header a {
 .animal {
   background-color: var(--blue);
   /* background-color: whitesmoke; */
-  transition: all ease-in-out 200ms;
+  transition: all ease-in-out 150ms;
   color: var(--yellow);
   border: 5px solid var(--yellow);
   border-radius: 10px;
