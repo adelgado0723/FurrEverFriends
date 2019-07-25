@@ -56,8 +56,13 @@ class Results extends React.Component {
           <code>{JSON.stringify(this.state.animals, null, 2)}</code>
         </pre> */}
         <SearchBox search={this.fetchAnimals} />
-
-        {this.state.numAnimals ? fetchedAnimals : <h1>No Results Found...</h1>}
+        <div>
+          {this.state.numAnimals ? (
+            fetchedAnimals
+          ) : (
+            <h1>No Results Found...</h1>
+          )}
+        </div>
       </div>
     );
   }

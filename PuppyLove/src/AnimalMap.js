@@ -32,6 +32,7 @@ class AnimalMap extends React.Component {
   render() {
     return (
       <div className="map-container">
+        {/* <h2>Location:</h2> */}
         <Map
           // item
           xs={12}
