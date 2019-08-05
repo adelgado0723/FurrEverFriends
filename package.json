@@ -1,17 +1,17 @@
 {
-  "name": "PuppyLove",
+  "name": "FurrEverFriends",
   "version": "1.0.0",
   "description": "An app to teach you to write React",
-  "main": "PuppyLove/src/App.js",
+  "main": "FurrEverFriends/src/App.js",
   "scripts": {
     "test": "jest --silent",
     "test:coverage": "jest --coverage",
     "test:update": "jest -u",
     "test:watch": "jest --watch",
-    "format": "prettier --write \"PuppyLove/src/**/*.{js,jsx}\"",
-    "lint": "eslint \"PuppyLove/src/**/*.{js,jsx}\" --quiet",
-    "dev": "parcel PuppyLove/src/index.html",
-    "build": "parcel build PuppyLove/src/index.html"
+    "format": "prettier --write \"FurrEverFriends/src/**/*.{js,jsx}\"",
+    "lint": "eslint \"FurrEverFriends/src/**/*.{js,jsx}\" --quiet",
+    "dev": "parcel FurrEverFriends/src/index.html",
+    "build": "parcel build FurrEverFriends/src/index.html"
   },
   "jest": {
     "transformIgnorePatterns": [
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adelgado0723/puppylove.git"
+    "url": "git+https://github.com/adelgado0723/FurrEverFriends.git"
   },
   "keywords": [
     "React",
@@ -29,9 +29,9 @@
   "author": "Andy Delgado",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/adelgado0723/puppylove/issues"
+    "url": "https://github.com/adelgado0723/FurrEverFriends/issues"
   },
-  "homepage": "https://github.com/adelgado0723/puppylove#readme",
+  "homepage": "https://github.com/adelgado0723/FurrEverFriends#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",

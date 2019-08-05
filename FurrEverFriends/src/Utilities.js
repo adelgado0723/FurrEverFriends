@@ -137,7 +137,7 @@ function getUtilities() {
           return processingPromise;
         })
         .then((processedResponse) => {
-          console.log(processedResponse);
+          // console.log(processedResponse);
           let animals;
           let numAnimals = 0;
           let numPages = 0;
@@ -158,7 +158,7 @@ function getUtilities() {
           } else {
             animals = {};
           }
-          console.log(numPages);
+          // console.log(numPages);
           this.setState({
             animals,
             loading: false,
@@ -293,7 +293,7 @@ function getUtilities() {
         return processingPromise;
       })
       .then((processedResponse) => {
-        console.log(processedResponse);
+        // console.log(processedResponse);
       });
   }
 
