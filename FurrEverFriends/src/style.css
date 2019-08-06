@@ -15,6 +15,8 @@
 body {
   background: var(--light-blue);
   margin: 0;
+
+  font-family: 'Lato', cursive;
 }
 header {
   font-size: 4em;
@@ -25,6 +27,9 @@ header {
   width: 100%;
   height: 120px;
   display: block;
+
+  font-family: 'Galindo', cursive;
+
   /* position: fixed; */
   /* top: 0; */
   /* z-index: 1000000; */
@@ -32,7 +37,7 @@ header {
 
 header a {
   color: var(--yellow);
-  font-weight: bold;
+  /* font-weight: bold; */
   text-decoration: none;
 }
 
@@ -63,12 +68,21 @@ header a {
   /* width: auto; */
   /* height: 8%; */
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
   overflow: hidden;
   margin: 15px 0;
   padding: 15px;
+}
+.animal h1 {
+  /* font-weight: bold; */
+
+  font-family: 'Galindo', cursive;
+}
+.animal h2 {
+  justify-self: start;
+  align-self: start;
 }
 .animal img {
   /* width: 100px; */
