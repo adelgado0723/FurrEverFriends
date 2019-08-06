@@ -46,9 +46,6 @@ class Results extends React.Component {
         />
       );
     }
-    // if (this.state.numAnimals === 0) {
-    //   fetchedAnimals.push(<h1>No Results Found...</h1>);
-    // }
 
     return (
       <div className="search">
