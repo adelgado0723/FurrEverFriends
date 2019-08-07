@@ -46,6 +46,16 @@ class Results extends React.Component {
         />
       );
     }
+    fetchedAnimals.push(
+      <div className="page-nav">
+        <span aria-label="previous page" role="img" className="prev-page-icon">
+          ◀
+        </span>
+        <span aria-label="next page" role="img" className="next-page-icon">
+          ►
+        </span>
+      </div>
+    );
 
     return (
       <div className="search">
