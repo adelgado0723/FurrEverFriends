@@ -1,3 +1,5 @@
+import { start } from 'repl';
+
 require('dotenv').config();
 const API_URL = 'https://api.rescuegroups.org/http/v2.json';
 
@@ -141,10 +143,17 @@ function getUtilities() {
           let animals;
           let numAnimals = 0;
           let numPages = 0;
+          let pageNumber = 0;
+          const startingAnimalIndex = parseInt(startingAnimal, 10);
+          const resultLimitNumber = parseInt(resultLimit, 10);
+
           if (processedResponse && processedResponse.data) {
             numAnimals = processedResponse.foundRows;
             animals = processedResponse.data;
-            numPages = Math.ceil(numAnimals / parseInt(resultLimit, 10));
+            numPages = Math.ceil(numAnimals / resultLimitNumber);
+            pageNumber = Math.ceil(
+              (startingAnimalIndex + 1) / resultLimitNumber
+            );
             for (let key in animals) {
               const coords = animals[key].animalLocationCoordinates.split(',');
               animals[key].location = {
@@ -164,6 +173,9 @@ function getUtilities() {
             loading: false,
             numAnimals,
             numPages,
+            pageNumber,
+            startingAnimalIndex,
+            resultLimit: resultLimitNumber,
           });
         });
     }

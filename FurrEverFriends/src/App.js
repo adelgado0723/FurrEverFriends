@@ -56,7 +56,9 @@ class App extends React.Component {
     return (
       <div className="app-root">
         <header>
-          <Link to="/">FurrEver Friends</Link>
+          <Link to="/" className="title">
+            FurrEver Friends
+          </Link>
           <Link to="/search-params">
             <span aria-label="search" role="img" className="search-icon">
               🔍

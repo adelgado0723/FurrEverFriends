@@ -16,6 +16,9 @@ class Results extends React.Component {
       loading: false,
       numAnimals: 0,
       numPages: 0,
+      pageNumber: 0,
+      startingAnimalIndex: -1,
+      resultLimit: -1,
     };
   }
   fetchAnimals = utils.fetchAnimals.bind(this);
@@ -23,6 +26,18 @@ class Results extends React.Component {
   componentDidMount() {
     this.fetchAnimals();
   }
+
+  getNextPage = () => {
+    const nextStartingAnimal =
+      this.state.startingAnimalIndex + this.state.resultLimit;
+    this.fetchAnimals(nextStartingAnimal.toString());
+  };
+
+  getPrevPage = () => {
+    const prevStartingAnimal =
+      this.state.startingAnimalIndex - this.state.resultLimit;
+    this.fetchAnimals(prevStartingAnimal.toString());
+  };
 
   render() {
     if (this.state.loading) {
@@ -46,17 +61,37 @@ class Results extends React.Component {
         />
       );
     }
-    fetchedAnimals.push(
+
+    const nav = (
       <div className="page-nav">
-        <span aria-label="previous page" role="img" className="prev-page-icon">
+        <span
+          aria-label="previous page"
+          role="img"
+          className="prev-page-icon"
+          onClick={this.getPrevPage}
+        >
           ◀
         </span>
-        <span aria-label="next page" role="img" className="next-page-icon">
+        <div className="page">
+          Page {this.state.pageNumber} of {this.state.numPages}
+        </div>
+        <span
+          aria-label="next page"
+          role="img"
+          className="next-page-icon"
+          onClick={this.getNextPage}
+        >
           ►
         </span>
       </div>
     );
 
+    let results = [];
+    if (this.state.numAnimals) {
+      results = fetchedAnimals;
+    } else {
+      results = <h1>No Results Found...</h1>;
+    }
     return (
       <div className="search">
         {/* <pre>
@@ -64,11 +99,8 @@ class Results extends React.Component {
         </pre> */}
         <SearchBox search={this.fetchAnimals} />
         <div>
-          {this.state.numAnimals ? (
-            fetchedAnimals
-          ) : (
-            <h1>No Results Found...</h1>
-          )}
+          {results}
+          {this.state.numAnimals ? nav : null}
         </div>
       </div>
     );

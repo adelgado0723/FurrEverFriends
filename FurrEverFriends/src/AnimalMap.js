@@ -58,7 +58,7 @@ class AnimalMap extends React.Component {
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >
-            <div>TESTING MAP DIV INSIDE INFOWINDOW</div>
+            <div>{this.props.location.formattedAddress}</div>
           </InfoWindow>
         </Map>
       </div>
