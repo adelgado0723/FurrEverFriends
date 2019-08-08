@@ -28,12 +28,18 @@ class Results extends React.Component {
   }
 
   getNextPage = () => {
+    if (this.state.pageNumber === this.state.numPages) {
+      return;
+    }
     const nextStartingAnimal =
       this.state.startingAnimalIndex + this.state.resultLimit;
     this.fetchAnimals(nextStartingAnimal.toString());
   };
 
   getPrevPage = () => {
+    if (this.state.pageNumber === 1) {
+      return;
+    }
     const prevStartingAnimal =
       this.state.startingAnimalIndex - this.state.resultLimit;
     this.fetchAnimals(prevStartingAnimal.toString());
@@ -67,7 +73,7 @@ class Results extends React.Component {
         <span
           aria-label="previous page"
           role="img"
-          className="prev-page-icon"
+          className={this.state.pageNumber === 1 ? 'disabled' : ''}
           onClick={this.getPrevPage}
         >
           ◀
@@ -78,7 +84,9 @@ class Results extends React.Component {
         <span
           aria-label="next page"
           role="img"
-          className="next-page-icon"
+          className={
+            this.state.pageNumber === this.state.numPages ? 'disabled' : ''
+          }
           onClick={this.getNextPage}
         >
           ►

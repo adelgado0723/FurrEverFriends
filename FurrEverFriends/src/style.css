@@ -67,7 +67,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  align-items: center;
+  /* align-items: center; */
   overflow: hidden;
   margin: 15px 0;
   padding: 15px;
@@ -88,7 +88,9 @@ header {
   margin: 0;
 }
 .animal img {
-  width: 100%;
+  /* width: 100%; */
+  width: auto;
+  height: auto;
   border-radius: 10px;
   max-height: 200px;
 }
@@ -242,7 +244,7 @@ header {
 }
 
 .carousel > img {
-  max-width: 300px;
+  max-width: 400px;
   max-height: 400px;
   border-radius: 5px;
 }
@@ -286,6 +288,10 @@ header {
 .page-nav span {
   color: var(--yellow);
   cursor: pointer;
+}
+.page-nav .disabled {
+  opacity: 0.5;
+  color: var(--sonic-silver);
 }
 /*
  * Author: http://stuffandnonsense.co.uk/blog/about/hardboiled_css3_media_queries/
