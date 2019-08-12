@@ -15,6 +15,36 @@ class Details extends React.Component {
       this.props.location.state.description
     );
     const showModal = this.state.showModal;
+
+    const details = (
+      <table>
+        <tr>
+          <th>Name:</th>
+          <td>{this.props.location.state.name}</td>
+          <th>Species:</th>
+          <td>{this.props.location.state.species}</td>
+        </tr>
+        <tr>
+          <th>breed:</th>
+          <td>{this.props.location.state.breed}</td>
+          <th>location:</th>
+          <td>{this.props.location.state.location.formattedAddress}</td>
+        </tr>
+        {/* Do the for loop here revealing the rest of the details */}
+        {/* <tr>
+          <th>header:</th>
+          <td>item</td>
+          <th>header:</th>
+          <td>item</td>
+        </tr>
+        <tr>
+          <th>header:</th>
+          <td>item</td>
+          <th>header:</th>
+          <td>item</td>
+        </tr> */}
+      </table>
+    );
     return (
       <div className="details">
         <h1>{this.props.location.state.name}</h1>
@@ -25,32 +55,7 @@ class Details extends React.Component {
         {showModal ? (
           <Modal>
             <h1>{this.props.location.state.name}'s Details</h1>
-            {/* <table>
-              <tr>
-                <th>header:</th>
-                <td>item</td>
-                <th>header:</th>
-                <td>item</td>
-              </tr>
-              <tr>
-                <th>header:</th>
-                <td>item</td>
-                <th>header:</th>
-                <td>item</td>
-              </tr>
-              <tr>
-                <th>header:</th>
-                <td>item</td>
-                <th>header:</th>
-                <td>item</td>
-              </tr>
-              <tr>
-                <th>header:</th>
-                <td>item</td>
-                <th>header:</th>
-                <td>item</td>
-              </tr>
-            </table> */}
+
             <div className="buttons">
               <button onClick={this.toggleModal}>Close</button>
               {/* <button onClick={this.toggleModal}>No</button> */}
