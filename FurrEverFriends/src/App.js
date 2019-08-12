@@ -57,7 +57,8 @@ class App extends React.Component {
       <div className="app-root">
         <header>
           <Link to="/" className="title">
-            FurrEver Friends
+            <span className="title-first">FurrEver</span>{' '}
+            <span className="title-first">Friends</span>
           </Link>
           <Link to="/search-params">
             <span aria-label="search" role="img" className="search-icon">

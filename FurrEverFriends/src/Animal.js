@@ -14,10 +14,10 @@ class Animal extends React.Component {
         <div className="image-container">
           <img src={thumbnail} alt={name} />
         </div>
-        <div className="info">
-          <h1>{name}</h1>
-          <h2>{`${species} - ${breed} - ${location.formattedAddress}`}</h2>
-        </div>
+        {/* <div className="info"> */}
+        <h1>{name}</h1>
+        <h2>{`${species} - ${breed} - ${location.formattedAddress}`}</h2>
+        {/* </div> */}
       </Link>
     );
   }
