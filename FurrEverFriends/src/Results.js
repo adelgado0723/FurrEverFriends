@@ -64,6 +64,15 @@ class Results extends React.Component {
           key={animal.animalID}
           id={animal.animalID}
           description={animal.animalDescription}
+          details={{
+            birthdate: animal.animalBirthdate,
+            color: animal.animalColor,
+            age: animal.animalGeneralAge,
+            'potential size': animal.animalGeneralSizePotential,
+            housetrained: animal.animalHousetrained,
+            gender: animal.animallSex,
+            'primary breed': animal.animalPrimaryBreed,
+          }}
         />
       );
     }

@@ -23,7 +23,6 @@ body {
   background: var(--light-blue);
   margin: 0;
   padding: 0;
-
   font-family: 'Lato', cursive;
 }
 header {
@@ -36,6 +35,7 @@ header {
   height: 120px;
   display: block;
   font-family: 'Galindo', cursive;
+  /* text-shadow: 3px 3px var(--ash-grey-t); */
   text-shadow: 3px 3px var(--ash-grey-t);
 }
 .title {
@@ -107,15 +107,7 @@ header {
   align-items: center;
   justify-items: center;
 }
-/* .info {
-  float: left;
-  height: 100%;
-  display: grid;
-  justify-items: center;
-  align-content: center;
-  grid-gap: 25px;
-}
- */
+
 .image-container {
   border-radius: 20px;
   width: 100%;
@@ -155,7 +147,7 @@ header {
   color: var(--blue);
   margin-bottom: 20px;
   font-family: 'Galindo';
-  text-shadow: 3px 3px var(--peach);
+  text-shadow: 3px 3px var(--ash-grey-t);
 }
 .details .description {
   grid-column: 2/3;
@@ -212,11 +204,13 @@ header {
 .search-params button,
 #modal button,
 .details button {
-  background-color: #ad343e;
+  background-color: var(--orange);
   padding: 5px 25px;
+  /* color: var(--black); */
   color: white;
   font-size: 18px;
-  border: #333 1px solid;
+  font-weight: bold;
+  border: 1px solid var(--yellow);
   border-radius: 5px;
   display: block;
   margin: 0 auto;
@@ -395,16 +389,19 @@ header {
   #modal .buttons button {
     margin-right: 15px;
   }
+  .search-params h2 {
+    font-size: 20px;
+  }
 
   .search-params label {
     width: 200px;
     margin: 10px 0px;
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .search-params input,
   .search-params select {
-    font-size: 18px;
+    font-size: 16px;
     height: 30px;
     width: 200px;
   }
@@ -413,8 +410,8 @@ header {
   #modal button,
   .details button {
     padding: 5px 25px;
-    font-size: 18px;
-    border: #333 1px solid;
+    font-size: 16px;
+    border: var(--black) 1px solid;
     border-radius: 5px;
   }
 
@@ -526,9 +523,7 @@ header {
     border-radius: 10px;
     max-height: 200px;
   }
-  .info {
-    grid-gap: 25px;
-  }
+
   .image-container {
     border-radius: 20px;
     height: 200px;

@@ -20,16 +20,40 @@ class Details extends React.Component {
         <h1>{this.props.location.state.name}</h1>
         <Carousel media={this.props.location.state.media} />
         <AnimalMap location={this.props.location.state.location} />
-        <button onClick={this.toggleModal}>
-          Adopt {this.props.location.state.name}
-        </button>
+        <button onClick={this.toggleModal}>View Details</button>
         <div className="description">{jsxDescription}</div>
         {showModal ? (
           <Modal>
-            <h1>Would you like to adopt {this.props.location.state.name}?</h1>
+            <h1>{this.props.location.state.name}'s Details</h1>
+            {/* <table>
+              <tr>
+                <th>header:</th>
+                <td>item</td>
+                <th>header:</th>
+                <td>item</td>
+              </tr>
+              <tr>
+                <th>header:</th>
+                <td>item</td>
+                <th>header:</th>
+                <td>item</td>
+              </tr>
+              <tr>
+                <th>header:</th>
+                <td>item</td>
+                <th>header:</th>
+                <td>item</td>
+              </tr>
+              <tr>
+                <th>header:</th>
+                <td>item</td>
+                <th>header:</th>
+                <td>item</td>
+              </tr>
+            </table> */}
             <div className="buttons">
-              <button onClick={this.toggleModal}>Yes</button>
-              <button onClick={this.toggleModal}>No</button>
+              <button onClick={this.toggleModal}>Close</button>
+              {/* <button onClick={this.toggleModal}>No</button> */}
             </div>
           </Modal>
         ) : null}
