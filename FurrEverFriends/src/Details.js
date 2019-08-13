@@ -16,34 +16,48 @@ class Details extends React.Component {
     );
     const showModal = this.state.showModal;
 
+    const optionalDetails = [];
+    for (detail in this.props.location.state.details) {
+      optionalDetails.push(
+        <div className="detail">
+          <span className="detail-header">
+            {detail
+              .toLowerCase()
+              .split(' ')
+              .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+              .join(' ')}
+          </span>
+          <span className="detail-value">{this.props.location.state.name}</span>
+        </div>
+      );
+    }
+
     const details = (
-      <table>
-        <tr>
-          <th>Name:</th>
-          <td>{this.props.location.state.name}</td>
-          <th>Species:</th>
-          <td>{this.props.location.state.species}</td>
-        </tr>
-        <tr>
-          <th>breed:</th>
-          <td>{this.props.location.state.breed}</td>
-          <th>location:</th>
-          <td>{this.props.location.state.location.formattedAddress}</td>
-        </tr>
-        {/* Do the for loop here revealing the rest of the details */}
-        {/* <tr>
-          <th>header:</th>
-          <td>item</td>
-          <th>header:</th>
-          <td>item</td>
-        </tr>
-        <tr>
-          <th>header:</th>
-          <td>item</td>
-          <th>header:</th>
-          <td>item</td>
-        </tr> */}
-      </table>
+      <div className="details-table">
+        <div className="detail">
+          <span className="detail-header">Name:</span>
+          <span className="detail-value">{this.props.location.state.name}</span>
+        </div>
+        <div className="detail">
+          <span className="detail-header">Species:</span>
+          <span className="detail-value">
+            {this.props.location.state.species}
+          </span>
+        </div>
+        <div className="detail">
+          <span className="detail-header">Breed:</span>
+          <span className="detail-value">
+            {this.props.location.state.breed}
+          </span>
+        </div>
+        <div className="detail">
+          <span className="detail-header">Location:</span>
+          <span className="detail-value">
+            {this.props.location.state.location.formattedAddress}
+          </span>
+        </div>
+        {optionalDetails}
+      </div>
     );
     return (
       <div className="details">
@@ -55,7 +69,7 @@ class Details extends React.Component {
         {showModal ? (
           <Modal>
             <h1>{this.props.location.state.name}'s Details</h1>
-
+            {details}
             <div className="buttons">
               <button onClick={this.toggleModal}>Close</button>
               {/* <button onClick={this.toggleModal}>No</button> */}
