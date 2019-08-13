@@ -82,11 +82,11 @@ class Results extends React.Component {
         <span
           aria-label="previous page"
           role="img"
-          className={this.state.pageNumber === 1 ? 'disabled' : ''}
+          className={
+            'triangle-left ' + (this.state.pageNumber === 1 ? 'disabled' : null)
+          }
           onClick={this.getPrevPage}
-        >
-          ⏴
-        </span>
+        ></span>
         <div className="page">
           Page {this.state.pageNumber} of {this.state.numPages}
         </div>
@@ -94,12 +94,11 @@ class Results extends React.Component {
           aria-label="next page"
           role="img"
           className={
-            this.state.pageNumber === this.state.numPages ? 'disabled' : ''
+            'triangle-right ' +
+            (this.state.pageNumber === this.state.numPages ? 'disabled' : null)
           }
           onClick={this.getNextPage}
-        >
-          ⏵
-        </span>
+        ></span>
       </div>
     );
 
