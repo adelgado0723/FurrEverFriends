@@ -20,15 +20,6 @@ class Search extends React.Component {
           <div className="search-params">
             <h2>Search Options:</h2>
             <form onSubmit={this.handleFormSubmit}>
-              <label htmlFor="location">
-                Zip Code
-                <input
-                  id="location"
-                  defaultValue={context.location}
-                  placeholder="Zip Code"
-                  onChange={context.handleLocationChange}
-                />
-              </label>
               <label htmlFor="species">
                 Species
                 <select
@@ -62,6 +53,15 @@ class Search extends React.Component {
                     </option>
                   ))}
                 </select>
+              </label>
+              <label htmlFor="location">
+                Location
+                <input
+                  id="location"
+                  defaultValue={context.location}
+                  placeholder="Zip Code"
+                  onChange={context.handleLocationChange}
+                />
               </label>
               <button>Submit</button>
             </form>

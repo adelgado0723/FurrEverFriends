@@ -74,6 +74,7 @@ header {
   overflow: hidden;
   margin: 15px 0;
   padding: 15px;
+  text-decoration: none;
 }
 .animal h1 {
   white-space: nowrap;
@@ -187,10 +188,15 @@ header {
   margin-right: 15px;
 }
 
+.search-params form {
+  display: grid;
+  grid-gap: 10px 0;
+}
+
 .search-params label {
   display: block;
   width: 200px;
-  margin: 10px 0px;
+  /* margin: 10px 0px; */
   font-size: 20px;
 }
 
@@ -198,7 +204,7 @@ header {
 .search-params select {
   font-size: 18px;
   height: 30px;
-  width: 200px;
+  /* width: 200px; */
 }
 
 .search-params button,
@@ -218,7 +224,9 @@ header {
 }
 
 .search-params button {
-  margin: 10px 0px;
+  margin-top: 15px;
+  justify-self: center;
+  align-self: center;
 }
 .search-params button:hover {
   background-color: #c36b72;
@@ -283,7 +291,7 @@ header {
   display: grid;
   grid-auto-flow: column;
   justify-items: center;
-  align-content: center;
+  align-items: center;
   font-size: 25px;
 }
 .page {
@@ -320,15 +328,17 @@ header {
 }
 .details-table {
   display: grid;
-  margin: 15px;
-  padding: 10px;
+  margin: 30px;
+  /* padding: 10px; */
+
+  grid-gap: 10px 0;
 }
 .details-table .detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: start;
-  grid-gap: 5px;
-  /* align-items: center; */
+  align-items: center;
+  height: 30px;
 }
 .details-table .detail:nth-of-type(2n) {
   /* background-color: var(--ash-grey-t); */
@@ -436,15 +446,15 @@ header {
 
   .search-params label {
     width: 200px;
-    margin: 10px 0px;
-    font-size: 16px;
+    margin-top: 10px 0px;
+    font-size: 18px;
   }
 
   .search-params input,
   .search-params select {
     font-size: 16px;
     height: 30px;
-    width: 200px;
+    width: 78.7vw;
   }
 
   .search-params button,
@@ -457,12 +467,9 @@ header {
   }
 
   .search-params button {
-    margin: 10px 0px;
+    /* margin: 10px 0px; */
   }
 
-  .search-params button:focus {
-    border: 1px solid cornflowerblue;
-  }
   .search-params form label input:focus {
     border: 2px solid var(--yellow);
   }
@@ -499,7 +506,17 @@ header {
 
   .page-nav {
     margin-top: 25px;
-    font-size: 25px;
+    font-size: 18px;
+  }
+  .triangle-right {
+    border-top: 9px solid transparent;
+    border-left: 18px solid var(--yellow);
+    border-bottom: 9px solid transparent;
+  }
+  .triangle-left {
+    border-top: 9px solid transparent;
+    border-right: 18px solid var(--yellow);
+    border-bottom: 9px solid transparent;
   }
 }
 
