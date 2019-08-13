@@ -85,7 +85,7 @@ class Results extends React.Component {
           className={this.state.pageNumber === 1 ? 'disabled' : ''}
           onClick={this.getPrevPage}
         >
-          ⯇
+          ⏴
         </span>
         <div className="page">
           Page {this.state.pageNumber} of {this.state.numPages}
@@ -98,7 +98,7 @@ class Results extends React.Component {
           }
           onClick={this.getNextPage}
         >
-          ⯈
+          ⏵
         </span>
       </div>
     );

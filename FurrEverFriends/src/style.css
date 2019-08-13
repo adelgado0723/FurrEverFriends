@@ -308,6 +308,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: start;
+  grid-gap: 5px;
   /* align-items: center; */
 }
 .details-table .detail:nth-of-type(2n) {
