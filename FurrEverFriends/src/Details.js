@@ -12,7 +12,9 @@ class Details extends React.Component {
 
     const optionalDetails = [];
     for (let detail in this.props.location.state.details) {
-      if (this.props.location.state.details[detail]) {
+      const detailValue = this.props.location.state.details[detail];
+      // if (detailValue && detailValue !== this.props.location.state.name) {
+      if (detailValue) {
         optionalDetails.push(
           <div className="detail">
             <span className="detail-header">
@@ -23,9 +25,7 @@ class Details extends React.Component {
                 .join(' ')}
               :
             </span>
-            <span className="detail-value">
-              {this.props.location.state.name}
-            </span>
+            <span className="detail-value">{detailValue}</span>
           </div>
         );
       }

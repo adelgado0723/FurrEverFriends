@@ -35,7 +35,6 @@ header {
   height: 120px;
   display: block;
   font-family: 'Galindo', cursive;
-  /* text-shadow: 3px 3px var(--ash-grey-t); */
   text-shadow: 3px 3px var(--ash-grey-t);
 }
 .title {
@@ -88,7 +87,6 @@ header {
   align-self: end;
 }
 .animal h2 {
-  /* justify-self: start; */
   align-self: start;
   font-weight: normal;
   font-size: 20px;
@@ -97,7 +95,6 @@ header {
   grid-row: 2/3;
 }
 .animal img {
-  /* width: 100%; */
   width: auto;
   height: auto;
   border-radius: 10px;
@@ -146,7 +143,7 @@ header {
   grid-row: 1/2;
   font-size: 45px;
   color: var(--blue);
-  margin-bottom: 20px;
+  margin: 20px 0 0 0;
   font-family: 'Galindo';
   text-shadow: 3px 3px var(--ash-grey-t);
 }
@@ -190,13 +187,12 @@ header {
 
 .search-params form {
   display: grid;
-  grid-gap: 10px 0;
+  grid-gap: 8px 0;
 }
 
 .search-params label {
   display: block;
   width: 200px;
-  /* margin: 10px 0px; */
   font-size: 20px;
 }
 
@@ -204,7 +200,7 @@ header {
 .search-params select {
   font-size: 18px;
   height: 30px;
-  /* width: 200px; */
+  width: 200px;
 }
 
 .search-params button,
@@ -212,7 +208,6 @@ header {
 .details button {
   background-color: var(--orange);
   padding: 5px 25px;
-  /* color: var(--black); */
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -234,10 +229,6 @@ header {
 
 .search-params button:active {
   background-color: #5f1d22;
-}
-
-.search-params button:focus {
-  border: 1px solid cornflowerblue;
 }
 
 .search {
@@ -329,8 +320,6 @@ header {
 .details-table {
   display: grid;
   margin: 30px;
-  /* padding: 10px; */
-
   grid-gap: 10px 0;
 }
 .details-table .detail {
@@ -341,10 +330,8 @@ header {
   height: 30px;
 }
 .details-table .detail:nth-of-type(2n) {
-  /* background-color: var(--ash-grey-t); */
 }
 .details-table .detail:nth-of-type(2n + 1) {
-  /* background-color: var(--key-lime); */
   background-color: var(--ash-grey-t);
 }
 .details-table .detail .detail-header {
@@ -374,6 +361,7 @@ header {
 
   .site-wrap {
     padding: 20px;
+    display: inline;
   }
   .animal {
     grid-template-columns: auto;
@@ -402,29 +390,22 @@ header {
   .map-container {
     width: 75vw;
     height: 300px;
-
     grid-row: 5/6;
     grid-column: 1/2;
   }
   .details {
-    grid-gap: 20px;
-    /* display: block; */
+    grid-gap: 40px;
     grid-template-rows: repeat(5, auto);
     grid-template-columns: auto;
-
-    /* justify-items: center; */
-    /* align-items: center; */
   }
   .details h1 {
     font-size: 40px;
-    margin-bottom: 20px;
     grid-row: 1/2;
     grid-column: 1/2;
   }
   .details .description {
     grid-row: 3/4;
     grid-column: 1/2;
-    /* width: 100%; */
     font-size: 16px;
   }
   .details button {
@@ -434,7 +415,7 @@ header {
   .details .carousel #modal > div {
     max-width: 500px;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
   #modal .buttons button {
@@ -445,8 +426,7 @@ header {
   }
 
   .search-params label {
-    width: 200px;
-    margin-top: 10px 0px;
+    width: 78.7vw;
     font-size: 18px;
   }
 
@@ -467,11 +447,6 @@ header {
   }
 
   .search-params button {
-    /* margin: 10px 0px; */
-  }
-
-  .search-params form label input:focus {
-    border: 2px solid var(--yellow);
   }
 
   .search {
@@ -479,9 +454,7 @@ header {
     grid-template-columns: auto;
     grid-gap: 20px;
   }
-
   .carousel {
-    grid-gap: 15px;
     grid-row: 2/3;
     grid-column: 1/2;
   }
@@ -489,19 +462,15 @@ header {
   .carousel > img {
     max-width: 75vw;
     max-height: 400px;
-    border-radius: 5px;
   }
 
   .carousel-smaller {
     max-width: 75vw;
-    grid-gap: 10px;
   }
 
   .carousel-smaller > img {
     width: 85px;
     height: 85px;
-    border-radius: 20%;
-    border: 2px solid #333;
   }
 
   .page-nav {
@@ -611,7 +580,7 @@ header {
 
   .search-params label {
     width: 200px;
-    margin: 10px 0px;
+    /* margin: 10px 0px; */
     font-size: 20px;
   }
 
