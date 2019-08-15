@@ -43,7 +43,7 @@ header {
 }
 
 .site-wrap {
-  width: 90%;
+  width: 90vw;
   max-width: 1000px;
   background: white;
   border-radius: 25px;
@@ -427,7 +427,7 @@ header {
   }
 
   .search-params label {
-    width: 78.7vw;
+    width: calc(90vw - 40px);
     font-size: 18px;
   }
 
@@ -435,7 +435,7 @@ header {
   .search-params select {
     font-size: 16px;
     height: 30px;
-    width: 78.7vw;
+    width: calc(90vw - 40px);
   }
 
   .search-params button,
