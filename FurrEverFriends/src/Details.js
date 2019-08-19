@@ -16,7 +16,10 @@ class Details extends React.Component {
       // if (detailValue && detailValue !== this.props.location.state.name) {
       if (detailValue) {
         optionalDetails.push(
-          <div className="detail">
+          <div
+            key={`${this.props.location.state.id}-${detail}`}
+            className="detail"
+          >
             <span className="detail-header">
               {detail
                 .toLowerCase()
@@ -33,23 +36,26 @@ class Details extends React.Component {
 
     const details = (
       <div className="details-table">
-        <div className="detail">
+        <div className="detail" key={`${this.props.location.state.id}-Name`}>
           <span className="detail-header">Name:</span>
           <span className="detail-value">{this.props.location.state.name}</span>
         </div>
-        <div className="detail">
+        <div className="detail" key={`${this.props.location.state.id}-Species`}>
           <span className="detail-header">Species:</span>
           <span className="detail-value">
             {this.props.location.state.species}
           </span>
         </div>
-        <div className="detail">
+        <div className="detail" key={`${this.props.location.state.id}-Breed`}>
           <span className="detail-header">Breed:</span>
           <span className="detail-value">
             {this.props.location.state.breed}
           </span>
         </div>
-        <div className="detail">
+        <div
+          className="detail"
+          key={`${this.props.location.state.id}-Location`}
+        >
           <span className="detail-header">Location:</span>
           <span className="detail-value">
             {this.props.location.state.location.formattedAddress}
@@ -65,7 +71,6 @@ class Details extends React.Component {
         <Carousel media={this.props.location.state.media} />
         <AnimalMap location={this.props.location.state.location} />
         <button onClick={this.toggleModal}>More Details</button>
-        {/* {console.log(`ZIP: ${this.props.location.state.location.zip}`)} */}
         <div
           className="description"
           dangerouslySetInnerHTML={{
@@ -73,7 +78,7 @@ class Details extends React.Component {
           }}
         ></div>
         {showModal ? (
-          <Modal>
+          <Modal key={`${this.props.location.state.id}-Modal`}>
             <h1>{this.props.location.state.name}'s Details</h1>
             {details}
             <div className="buttons">
