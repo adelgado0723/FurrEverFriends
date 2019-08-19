@@ -1,18 +1,13 @@
 import React from 'react';
-import { Provider, Consumer } from './SearchContext';
+import { Consumer } from './SearchContext';
 
 class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-    };
-  }
+}
   handleFormSubmit = (event) => {
     event.preventDefault();
-    this.state.loading = true;
     this.props.search();
   };
+  radius_values = ['10', '25', '50', '100', '200'];
   render() {
     return (
       <Consumer>
@@ -62,6 +57,24 @@ class Search extends React.Component {
                   placeholder="Zip Code"
                   onChange={context.handleLocationChange}
                 />
+              </label>
+              <label htmlFor="Radius">
+                Radius
+                <select
+                  // Disabled if no location is set
+                  disabled={!context.location.length}
+                  id="radius"
+                  defaultValue={context.radius}
+                  onChange={context.handleRadiusChange}
+                  onBlur={context.handleRadiusChange}
+                >
+                  <option />
+                  {this.radius_values.map((radius) => (
+                    <option value={radius} key={radius}>
+                      {radius}
+                    </option>
+                  ))}
+                </select>
               </label>
               <button>Submit</button>
             </form>

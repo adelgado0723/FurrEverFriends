@@ -65,7 +65,7 @@ class Details extends React.Component {
         <Carousel media={this.props.location.state.media} />
         <AnimalMap location={this.props.location.state.location} />
         <button onClick={this.toggleModal}>More Details</button>
-
+        {/* {console.log(`ZIP: ${this.props.location.state.location.zip}`)} */}
         <div
           className="description"
           dangerouslySetInnerHTML={{

@@ -43,6 +43,13 @@ class App extends React.Component {
       breed: event.target.value,
     });
   };
+
+  handleRadiusChange = (event) => {
+    this.setState({
+      radius: event.target.value,
+    });
+  };
+
   handleLocationChange = (event) => {
     this.setState({
       location: event.target.value,

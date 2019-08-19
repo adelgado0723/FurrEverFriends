@@ -6,6 +6,8 @@ const SearchContext = React.createContext({
   selectedSpecies: '',
   breed: '',
   breeds: [],
+  radius: '',
+  handleRadiusChange() {},
   fetchAllSpecies() {},
   fetchBreedsBySpecies() {},
   handleSpeciesChange() {},

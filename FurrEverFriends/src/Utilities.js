@@ -71,11 +71,18 @@ function getUtilities() {
       });
       if (this.props.searchParams) {
         if (this.props.searchParams.location) {
-          params.push({
-            fieldName: 'animalLocation',
-            operation: 'equal',
-            criteria: this.props.searchParams.location,
-          });
+          // params.push({
+          //   fieldName: 'animalLocation',
+          //   operation: 'equal',
+          //   criteria: this.props.searchParams.location,
+          // });
+          if (this.props.searchParams.radius) {
+            params.push({
+              fieldName: 'animalLocationDistance',
+              operation: 'radius',
+              criteria: this.props.searchParams.radius,
+            });
+          }
         }
         if (this.props.searchParams.selectedSpecies) {
           params.push({
@@ -163,6 +170,8 @@ function getUtilities() {
                 latitude: coords[0],
                 formattedAddress: animals[key].animalLocationCitystate,
               };
+
+              console.table(animals[key].location);
             }
           } else {
             animals = {};
