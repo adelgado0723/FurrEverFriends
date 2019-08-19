@@ -2,7 +2,10 @@
 
 ## Summary
 
-[FurrEverFriends.net](https://www.furreverfriends.net) features animals that are available for adoption accross the United States. It exposes data from the [RescueGroups API](https://userguide.rescuegroups.org/display/APIDG/v2) so that users can search for an animal to adopt.
+[FurrEverFriends.net](https://www.furreverfriends.net) features animals that
+are available for adoption across the United States. It exposes data from the
+[RescueGroups API](https://userguide.rescuegroups.org/display/APIDG/v2) so
+that users can search for an animal to adopt.
 
 ## Setup
 
