@@ -71,17 +71,20 @@ function getUtilities() {
       });
       if (this.props.searchParams) {
         if (this.props.searchParams.location) {
-          // params.push({
-          //   fieldName: 'animalLocation',
-          //   operation: 'equal',
-          //   criteria: this.props.searchParams.location,
-          // });
+          params.push({
+            fieldName: 'animalLocation',
+            operation: 'equal',
+            criteria: this.props.searchParams.location,
+          });
           if (this.props.searchParams.radius) {
             params.push({
               fieldName: 'animalLocationDistance',
               operation: 'radius',
               criteria: this.props.searchParams.radius,
             });
+
+            console.log(`Location: ${this.props.searchParams.location}`);
+            console.log(`Radius: ${this.props.searchParams.radius}`);
           }
         }
         if (this.props.searchParams.selectedSpecies) {
@@ -108,6 +111,7 @@ function getUtilities() {
         'animalGeneralSizePotential',
         'animalHousetrained',
         'animalID',
+        'animalLocation',
         'animalLocationCitystate',
         'animalLocationCoordinates',
         'animalLocationState',
@@ -147,6 +151,7 @@ function getUtilities() {
         })
         .then((processedResponse) => {
           // console.log(processedResponse);
+
           let animals;
           let numAnimals = 0;
           let numPages = 0;
@@ -171,7 +176,7 @@ function getUtilities() {
                 formattedAddress: animals[key].animalLocationCitystate,
               };
 
-              console.table(animals[key].location);
+              // console.table(animals[key].location);
             }
           } else {
             animals = {};

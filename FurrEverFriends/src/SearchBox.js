@@ -2,12 +2,11 @@ import React from 'react';
 import { Consumer } from './SearchContext';
 
 class Search extends React.Component {
-}
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.props.search();
   };
-  radius_values = ['10', '25', '50', '100', '200'];
+  radius_values = ['10', '25', '50', '100', '200', '300'];
   render() {
     return (
       <Consumer>
@@ -59,16 +58,14 @@ class Search extends React.Component {
                 />
               </label>
               <label htmlFor="Radius">
-                Radius
+                Radius (miles)
                 <select
-                  // Disabled if no location is set
                   disabled={!context.location.length}
                   id="radius"
-                  defaultValue={context.radius}
+                  defaultValue={context.radius ? context.radius : '50'}
                   onChange={context.handleRadiusChange}
                   onBlur={context.handleRadiusChange}
                 >
-                  <option />
                   {this.radius_values.map((radius) => (
                     <option value={radius} key={radius}>
                       {radius}

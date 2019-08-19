@@ -202,7 +202,11 @@ header {
   height: 30px;
   width: 200px;
 }
-
+.search-params input:disabled,
+.search-params select:disabled {
+  opacity: 0.5;
+  cursor: disabled;
+}
 .search-params button,
 #modal button,
 .details button {
