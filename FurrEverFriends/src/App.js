@@ -13,7 +13,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // TODO: Take zip code as search param. If blank, return results for all zips.
       location: '',
       selectedSpecies: '',
       species: [],
@@ -21,7 +20,6 @@ class App extends React.Component {
       breed: '',
       radius: '',
       handleRadiusChange: this.handleRadiusChange,
-      // loading: true,
       fetchAllSpecies: this.fetchAllSpecies,
       fetchBreedsBySpecies: this.fetchBreedsBySpecies,
       handleSpeciesChange: this.handleSpeciesChange,

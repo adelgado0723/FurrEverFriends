@@ -1,5 +1,3 @@
-import { start } from 'repl';
-
 require('dotenv').config();
 const API_URL = 'https://api.rescuegroups.org/http/v2.json';
 
