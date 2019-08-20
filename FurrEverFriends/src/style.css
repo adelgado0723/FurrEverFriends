@@ -6,6 +6,7 @@
   --light-blue: #86bbd8;
   --yellow: #f6ae2d;
   --yellow-hover: rgb(224, 161, 43);
+  --yellow-hover: rgb(197, 147, 55);
   --orange: #f26419;
   --key-lime: #d6f49d;
   --peach: #fcd0a1;
@@ -319,6 +320,27 @@ header {
   border-right-color: var(--sonic-silver);
   opacity: 0.5;
 }
+
+.triangle-right.disabled:hover {
+  border-left-color: var(--sonic-silver);
+}
+.triangle-left.disabled:hover {
+  border-right-color: var(--sonic-silver);
+}
+.triangle-right:hover {
+  border-left-color: var(--yellow-hover);
+}
+.triangle-left:hover {
+  border-right-color: var(--yellow-hover);
+}
+.triangle-right:active {
+  border-left-color: var(--yellow-hover);
+  opacity: 0.5;
+}
+.triangle-left:active {
+  border-right-color: var(--yellow-hover);
+  opacity: 0.5;
+}
 .triangle-right {
   width: 0;
   height: 0;
@@ -349,6 +371,7 @@ header {
   align-items: center;
   padding: 5px;
   /* height: 30px; */
+  font-size: 16px;
 }
 .details-table .detail:nth-of-type(2n) {
 }
@@ -442,6 +465,10 @@ header {
     padding: 10px;
     border-radius: 10px;
   }
+  .details .description img {
+    max-width: calc(90vw - 40px);
+    max-height: 400px;
+  }
 
   #modal .buttons button {
     margin-right: 15px;
@@ -515,6 +542,9 @@ header {
     border-top: 9px solid transparent;
     border-right: 18px solid var(--yellow);
     border-bottom: 9px solid transparent;
+  }
+  .details-table .detail {
+    font-size: 14px;
   }
 }
 
