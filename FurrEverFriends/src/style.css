@@ -147,6 +147,10 @@ header {
   font-family: 'Galindo';
   text-shadow: 3px 3px var(--ash-grey-t);
 }
+.details .description img {
+  max-width: 400px;
+  max-height: 400px;
+}
 .details .description {
   grid-column: 2/3;
   grid-row: 2/3;
@@ -251,8 +255,14 @@ header {
   grid-gap: 15px;
   align-self: start;
 }
-
-.carousel > img {
+.carousel .active-img-container {
+  width: 400px;
+  height: 400px;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.carousel .active-img-container img {
   max-width: 400px;
   max-height: 400px;
   border-radius: 5px;
@@ -270,11 +280,11 @@ header {
   height: 100px;
   border-radius: 20%;
   cursor: pointer;
-  border: 2px solid #333;
+  border: 2px solid var(--black);
 }
 
 .carousel-smaller > img.active {
-  border-color: #ad343e;
+  border-color: var(--red);
   opacity: 0.6;
 }
 
@@ -323,19 +333,23 @@ header {
 }
 .details-table {
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-template-rows: 1fr; */
   margin: 30px;
   grid-gap: 10px 0;
 }
 .details-table .detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-items: start;
+  justify-items: center;
   align-items: center;
-  height: 30px;
+  padding: 5px;
+  /* height: 30px; */
 }
 .details-table .detail:nth-of-type(2n) {
 }
-.details-table .detail:nth-of-type(2n + 1) {
+.details-table .detail:nth-of-type(4n + 1),
+.details-table .detail:nth-of-type(4n + 2) {
   background-color: var(--ash-grey-t);
 }
 .details-table .detail .detail-header {
@@ -463,8 +477,10 @@ header {
     grid-row: 2/3;
     grid-column: 1/2;
   }
-
-  .carousel > img {
+  .carousel .active-img-container {
+    max-width: 75vw;
+  }
+  .carousel .active-img-container img {
     max-width: 75vw;
     max-height: 400px;
   }

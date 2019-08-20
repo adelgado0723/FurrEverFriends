@@ -62,6 +62,7 @@ class Results extends React.Component {
           location={animal.location}
           key={animal.animalID}
           id={animal.animalID}
+          // description={animal.animalDescriptionPlain}
           description={animal.animalDescription}
           details={{
             birthdate: animal.animalBirthdate,

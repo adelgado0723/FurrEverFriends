@@ -104,6 +104,7 @@ function getUtilities() {
         'animalBirthdate',
         'animalBreed',
         'animalColor',
+        // 'animalDescriptionPlain',
         'animalDescription',
         'animalGeneralAge',
         'animalGeneralSizePotential',
