@@ -407,7 +407,9 @@ header {
     grid-row: 2/3;
   }
   .map-container {
-    width: 75vw;
+    /* width: 75vw; */
+    width: calc(90vw - 40px);
+    /* left: 0; */
     height: 300px;
     grid-row: 5/6;
     grid-column: 1/2;
@@ -432,8 +434,8 @@ header {
     grid-column: 1/2;
   }
   .details .carousel #modal > div {
-    max-width: 500px;
-    padding: 15px;
+    max-width: 90vw;
+    padding: 10px;
     border-radius: 10px;
   }
 
@@ -478,20 +480,22 @@ header {
     grid-column: 1/2;
   }
   .carousel .active-img-container {
-    max-width: 75vw;
+    /* width: 75vw; */
+    width: calc(90vw - 40px);
   }
   .carousel .active-img-container img {
-    max-width: 75vw;
+    max-width: calc(90vw - 40px);
     max-height: 400px;
   }
 
   .carousel-smaller {
-    max-width: 75vw;
+    width: calc(90vw - 40px);
+    grid-gap: 10px 25px;
   }
 
   .carousel-smaller > img {
-    width: 85px;
-    height: 85px;
+    width: 20vw;
+    height: 20vw;
   }
 
   .page-nav {
