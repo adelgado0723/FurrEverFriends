@@ -15,7 +15,7 @@ class Search extends React.Component {
             <h2>Search Options:</h2>
             <form onSubmit={this.handleFormSubmit}>
               <label htmlFor="species">
-                Species
+                Species:
                 <select
                   name="species"
                   id="species"
@@ -32,7 +32,7 @@ class Search extends React.Component {
                 </select>
               </label>
               <label htmlFor="Breed">
-                Breed
+                Breed:
                 <select
                   disabled={!context.breeds.length}
                   id="breed"
@@ -49,7 +49,7 @@ class Search extends React.Component {
                 </select>
               </label>
               <label htmlFor="location">
-                Location
+                Location:
                 <input
                   id="location"
                   defaultValue={context.location}
@@ -57,8 +57,8 @@ class Search extends React.Component {
                   onChange={context.handleLocationChange}
                 />
               </label>
-              <label htmlFor="Radius">
-                Radius (miles)
+              <label htmlFor="Radius" id="radius-label">
+                Radius:
                 <select
                   disabled={!context.location.length}
                   id="radius"
@@ -72,6 +72,7 @@ class Search extends React.Component {
                     </option>
                   ))}
                 </select>
+                miles
               </label>
               <button>Submit</button>
             </form>
