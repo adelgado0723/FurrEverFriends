@@ -2,76 +2,27 @@ import React from 'react';
 import Carousel from './Carousel.js';
 import AnimalMap from './AnimalMap.js';
 import Modal from './Modal.js';
+import getUtilities from './Utilities.js';
 
-// https://css-tricks.com/snippets/javascript/remove-inline-styles/
-function remove_style(all) {
-  var i = all.length;
-  var j, is_hidden;
-
-  // Presentational attributes.
-  var attr = [
-    'align',
-    'background',
-    'bgcolor',
-    'border',
-    'cellpadding',
-    'cellspacing',
-    'color',
-    'face',
-    'height',
-    'hspace',
-    'marginheight',
-    'marginwidth',
-    'noshade',
-    'nowrap',
-    'valign',
-    'vspace',
-    'width',
-    'vlink',
-    'alink',
-    'text',
-    'link',
-    'frame',
-    'frameborder',
-    'clear',
-    'scrolling',
-    'style',
-    'class',
-  ];
-
-  var attr_len = attr.length;
-
-  while (i--) {
-    is_hidden = all[i].style.display === 'none';
-
-    j = attr_len;
-
-    while (j--) {
-      all[i].removeAttribute(attr[j]);
-    }
-
-    // Re-hide display:none elements,
-    // so they can be toggled via JS.
-    if (is_hidden) {
-      all[i].style.display = 'none';
-      is_hidden = false;
-    }
-  }
-}
+const utils = getUtilities();
 
 class Details extends React.Component {
-  state = { showModal: false };
+  constructor(props) {
+    super(props);
 
-  static getDerivedStateFromProps({ location }) {
-    console.log(`Before Cleaning: ${location.state.description}`);
-    let description = location.state.description;
+    let description = '';
+    description = props.location.state.description;
     const descElement = document.createElement('div');
     descElement.innerHTML = description;
-    remove_style(descElement);
+
+    // Recursive walk
+    utils.walkDOM(descElement, utils.removeStyle);
+
     description = descElement.innerHTML;
-    console.log(`After Cleaning: ${description}`);
-    return { description };
+    // console.log(`After Cleaning: ${description}`);
+    this.state = { showModal: false, description };
   }
+
   toggleModal = () => this.setState({ showModal: !this.state.showModal });
   render() {
     const showModal = this.state.showModal;
@@ -79,7 +30,6 @@ class Details extends React.Component {
     const optionalDetails = [];
     for (let detail in this.props.location.state.details) {
       const detailValue = this.props.location.state.details[detail];
-      // if (detailValue && detailValue !== this.props.location.state.name) {
       if (detailValue) {
         optionalDetails.push(
           <div

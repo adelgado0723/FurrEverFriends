@@ -1,14 +1,10 @@
 import React from 'react';
 
 class Carousel extends React.Component {
-  state = {
-    photos: [],
-    active: 0,
-  };
-  // This function gives us an opportunity to
-  // perform transformations and set the state
-  // given the passed in props.
-  static getDerivedStateFromProps({ media }) {
+  constructor(props) {
+    super(props);
+
+    const media = props.media;
     let photos = [];
     if (media && media[0]) {
       photos = media.map((mediaItem) => {
@@ -17,9 +13,13 @@ class Carousel extends React.Component {
           large: mediaItem.large.url,
         };
       });
-      return { photos };
     }
+    this.state = {
+      active: 0,
+      photos,
+    };
   }
+
   handleIndexClick = (event) => {
     this.setState({
       // The "+" here is for converting the

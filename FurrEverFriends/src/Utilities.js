@@ -6,6 +6,8 @@ function getUtilities() {
     fetchAnimals,
     fetchSpecies,
     fetchBreeds,
+    removeStyle,
+    walkDOM,
   };
 
   return utilities;
@@ -81,8 +83,8 @@ function getUtilities() {
               criteria: this.props.searchParams.radius,
             });
 
-            console.log(`Location: ${this.props.searchParams.location}`);
-            console.log(`Radius: ${this.props.searchParams.radius}`);
+            // console.log(`Location: ${this.props.searchParams.location}`);
+            // console.log(`Radius: ${this.props.searchParams.radius}`);
           }
         }
         if (this.props.searchParams.selectedSpecies) {
@@ -322,6 +324,76 @@ function getUtilities() {
       });
   }
 
+  //*************************************************************************** */
+  // remove_style looks to see if any of the attributes in the attr array are
+  // present in the element parameter and removes them if found.
+  //*************************************************************************** */
+  // https://css-tricks.com/snippets/javascript/remove-inline-styles/
+  function removeStyle(element) {
+    // console.log(element);
+    var j, is_hidden;
+
+    // Presentational attributes.
+    var attr = [
+      'align',
+      'background',
+      'bgcolor',
+      'border',
+      'cellpadding',
+      'cellspacing',
+      'color',
+      'face',
+      'height',
+      'hspace',
+      'marginheight',
+      'marginwidth',
+      'noshade',
+      'nowrap',
+      'valign',
+      'vspace',
+      'width',
+      'vlink',
+      'alink',
+      'text',
+      'link',
+      'frame',
+      'frameborder',
+      'clear',
+      'scrolling',
+      'style',
+      'class',
+    ];
+
+    var attr_len = attr.length;
+    if (element.nodeName !== '#text') {
+      if (element.style) {
+        is_hidden = element.style.display === 'none';
+      }
+      j = attr_len;
+
+      while (j--) {
+        element.removeAttribute(attr[j]);
+      }
+
+      // Re-hide display:none elements,
+      // so they can be toggled via JS.
+      if (is_hidden) {
+        element.style.display = 'none';
+      }
+    }
+  }
+  //*************************************************************************** */
+  // from https://www.javascriptcookbook.com/article/traversing-dom-subtrees-with-a-recursive-walk-the-dom-function/
+  // recursively visits each child node, applying the parameter, func, to each
+  //*************************************************************************** */
+  function walkDOM(node, func) {
+    func(node);
+    node = node.firstChild;
+    while (node) {
+      walkDOM(node, func);
+      node = node.nextSibling;
+    }
+  }
   //*************************************************************************** */
 }
 export default getUtilities;
