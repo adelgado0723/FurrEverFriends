@@ -12,8 +12,8 @@ class Search extends React.Component {
       <Consumer>
         {(context) => (
           <div className="search-params">
-            <h2>Search Options:</h2>
             <form onSubmit={this.handleFormSubmit}>
+              <h2>Search Options:</h2>
               <label htmlFor="species">
                 Species:
                 <select
