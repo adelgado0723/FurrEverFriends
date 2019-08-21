@@ -63,11 +63,14 @@ class Details extends React.Component {
   state = { showModal: false };
 
   static getDerivedStateFromProps({ location }) {
-    const description = location.state.description;
+    console.log(`Before Cleaning: ${location.state.description}`);
+    let description = location.state.description;
     const descElement = document.createElement('div');
     descElement.innerHTML = description;
     remove_style(descElement);
-    location.state.description = descElement.innerHTML;
+    description = descElement.innerHTML;
+    console.log(`After Cleaning: ${description}`);
+    return { description };
   }
   toggleModal = () => this.setState({ showModal: !this.state.showModal });
   render() {
@@ -137,7 +140,7 @@ class Details extends React.Component {
         <div
           className="description"
           dangerouslySetInnerHTML={{
-            __html: this.props.location.state.description,
+            __html: this.state.description,
           }}
         ></div>
         {showModal ? (
