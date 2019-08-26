@@ -7,12 +7,22 @@ class Carousel extends React.Component {
     const media = props.media;
     let photos = [];
     if (media && media[0]) {
-      photos = media.map((mediaItem) => {
-        return {
-          small: mediaItem.small.url,
-          large: mediaItem.large.url,
-        };
-      });
+      photos = media
+        .map((mediaItem, index) => {
+          if (index < 6) {
+            return {
+              small: mediaItem.small.url,
+              large: mediaItem.large.url,
+            };
+          } else {
+            return null;
+          }
+        })
+        .filter((item) => {
+          if (item) {
+            return item;
+          }
+        });
     }
     this.state = {
       active: 0,
