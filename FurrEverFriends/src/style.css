@@ -48,7 +48,7 @@ header {
 
 .site-wrap {
   width: 90vw;
-  max-width: 1000px;
+  /* max-width: 1000px; */
   background: white;
   border-radius: 25px;
   padding: 40px;
@@ -66,6 +66,7 @@ header {
 }
 
 .animal {
+  max-width: 800px;
   grid-gap: 15px;
   background-color: var(--blue);
   transition: all ease-in-out 120ms;
@@ -286,7 +287,8 @@ header {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr 3fr;
-  grid-gap: 20px;
+  grid-gap: 5vw;
+  justify-items: center;
 }
 
 .search-params {
@@ -627,7 +629,7 @@ header {
   }
 }
 
-@media only screen and (min-width: 530px) and (max-width: 760px) {
+@media only screen and (min-width: 530px) and (max-width: 890px) {
   /* Styles */
 
   header {
