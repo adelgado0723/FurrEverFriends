@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<a
+  className="animal"
+  href="/details/undefined"
+  onClick={[Function]}
+>
+  <div
+    className="image-container"
+  >
+    <img
+      src={Object {}}
+    />
+  </div>
+  <h1 />
+  <h2>
+    undefined - undefined - 
+  </h2>
+</a>
+`;

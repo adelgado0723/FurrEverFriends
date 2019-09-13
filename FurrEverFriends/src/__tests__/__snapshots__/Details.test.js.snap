@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="details"
+>
+  <h1 />
+  <div
+    className="carousel"
+  >
+    <div
+      className="active-img-container"
+    >
+      <img
+        alt="animal"
+        src=""
+      />
+    </div>
+    <div
+      className="carousel-smaller"
+    />
+  </div>
+  <div>
+    Loading...
+  </div>
+  <button
+    onClick={[Function]}
+  >
+    More Details
+  </button>
+  <div
+    className="description"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "",
+      }
+    }
+  />
+</div>
+`;

@@ -15,7 +15,9 @@ class Animal extends React.Component {
           <img src={thumbnail} alt={name} />
         </div>
         <h1>{name}</h1>
-        <h2>{`${species} - ${breed} - ${location.formattedAddress}`}</h2>
+        <h2>{`${species} - ${breed} - ${
+          location && location.formattedAddress ? location.formattedAddress : ''
+        }`}</h2>
       </Link>
     );
   }

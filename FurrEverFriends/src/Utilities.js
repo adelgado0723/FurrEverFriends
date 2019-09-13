@@ -336,6 +336,7 @@ function getUtilities() {
     // Presentational attributes.
     var attr = [
       'align',
+      'autofocus',
       'background',
       'bgcolor',
       'border',
@@ -372,7 +373,9 @@ function getUtilities() {
       j = attr_len;
 
       while (j--) {
-        element.removeAttribute(attr[j]);
+        if (element.removeAttribute) {
+          element.removeAttribute(attr[j]);
+        }
       }
 
       // Re-hide display:none elements,

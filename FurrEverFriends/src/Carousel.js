@@ -42,7 +42,12 @@ class Carousel extends React.Component {
     return (
       <div className="carousel">
         <div className="active-img-container">
-          <img src={photos[active].large} alt="animal" />
+          <img
+            src={
+              photos[active] && photos[active].large ? photos[active].large : ''
+            }
+            alt="animal"
+          />
         </div>
         <div className="carousel-smaller">
           {photos.map((photo, index) => (

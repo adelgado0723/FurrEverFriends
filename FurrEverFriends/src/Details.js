@@ -9,35 +9,45 @@ const utils = getUtilities();
 class Details extends React.Component {
   constructor(props) {
     super(props);
+    const locationState =
+      props.location && props.location.state ? props.location.state : '';
 
-    let description = '';
-    description = props.location.state.description;
-    const descElement = document.createElement('div');
-    descElement.innerHTML = description;
+    // Cleaning HTML description from API
+    let description = locationState ? locationState.description : '';
+    if (description) {
+      const descElement = document.createElement('div');
+      descElement.innerHTML = description;
 
-    // Recursive walk
-    utils.walkDOM(descElement, utils.removeStyle);
-
-    description = descElement.innerHTML;
-    // console.log(`After Cleaning: ${description}`);
-    this.state = { showModal: false, description };
+      // Recursive walk
+      utils.walkDOM(descElement, utils.removeStyle);
+      description = descElement.innerHTML;
+    }
+    this.state = { showModal: false, description, locationState };
   }
 
   toggleModal = () => this.setState({ showModal: !this.state.showModal });
   render() {
     const showModal = this.state.showModal;
 
+    const {
+      name,
+      id,
+      details,
+      species,
+      breed,
+      location,
+      media,
+    } = this.state.locationState;
+
     const optionalDetails = [];
-    for (let detail in this.props.location.state.details) {
-      const detailValue = this.props.location.state.details[detail];
+    for (let detail in details) {
+      const detailValue = details[detail];
       if (detailValue) {
         optionalDetails.push(
-          <div
-            key={`${this.props.location.state.id}-${detail}`}
-            className="detail"
-          >
+          <div key={`${id}-${detail}`} className="detail">
             <span className="detail-header">
-              {detail
+              {// capitalizing the first letter of each detail header}
+              detail
                 .toLowerCase()
                 .split(' ')
                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
@@ -49,32 +59,36 @@ class Details extends React.Component {
         );
       }
     }
+    // Adding an extra empty detail for table-like appearance
+    if (optionalDetails.length % 2 != 0) {
+      optionalDetails.push(
+        <div key={`rounding off detail`} className="detail">
+          <span className="detail-header"></span>
+          <span className="detail-value"></span>
+        </div>
+      );
+    }
 
-    const details = (
+    const detailsArray = (
       <div className="details-table">
-        <div className="detail" key={`${this.props.location.state.id}-Name`}>
+        <div className="detail" key={`${id}-Name`}>
           <span className="detail-header">Name:</span>
-          <span className="detail-value">{this.props.location.state.name}</span>
+          <span className="detail-value">{name}</span>
         </div>
-        <div className="detail" key={`${this.props.location.state.id}-Species`}>
+        <div className="detail" key={`${id}-Species`}>
           <span className="detail-header">Species:</span>
-          <span className="detail-value">
-            {this.props.location.state.species}
-          </span>
+          <span className="detail-value">{species}</span>
         </div>
-        <div className="detail" key={`${this.props.location.state.id}-Breed`}>
+        <div className="detail" key={`${id}-Breed`}>
           <span className="detail-header">Breed:</span>
-          <span className="detail-value">
-            {this.props.location.state.breed}
-          </span>
+          <span className="detail-value">{breed}</span>
         </div>
-        <div
-          className="detail"
-          key={`${this.props.location.state.id}-Location`}
-        >
+        <div className="detail" key={`${id}-Location`}>
           <span className="detail-header">Location:</span>
           <span className="detail-value">
-            {this.props.location.state.location.formattedAddress}
+            {location && location.formattedAddress
+              ? location.formattedAddress
+              : ''}
           </span>
         </div>
         {optionalDetails}
@@ -83,9 +97,9 @@ class Details extends React.Component {
 
     return (
       <div className="details">
-        <h1>{this.props.location.state.name}</h1>
-        <Carousel media={this.props.location.state.media} />
-        <AnimalMap location={this.props.location.state.location} />
+        <h1>{name}</h1>
+        <Carousel media={media} />
+        <AnimalMap location={location} />
         <button onClick={this.toggleModal}>More Details</button>
         <div
           className="description"
@@ -94,9 +108,12 @@ class Details extends React.Component {
           }}
         ></div>
         {showModal ? (
-          <Modal key={`${this.props.location.state.id}-Modal`}>
-            <h1>{this.props.location.state.name}'s Details</h1>
-            {details}
+          <Modal key={`${id}-Modal`}>
+            <h1>
+              {name}
+              's Details
+            </h1>
+            {detailsArray}
             <div className="buttons">
               <button onClick={this.toggleModal}>Close</button>
             </div>
