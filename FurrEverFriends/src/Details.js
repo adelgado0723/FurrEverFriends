@@ -1,10 +1,33 @@
+import Loadable from 'react-loadable';
 import React from 'react';
-import Carousel from './Carousel.js';
-import AnimalMap from './AnimalMap.js';
-import Modal from './Modal.js';
 import getUtilities from './Utilities.js';
 
 const utils = getUtilities();
+
+const LoadableModal = Loadable({
+  loader: () => import('./Modal'),
+  loading() {
+    return <h1>Loading split Modal code...</h1>;
+  },
+});
+const LoadableCarousel = Loadable({
+  loader: () => import('./Carousel'),
+  loading() {
+    return <h1>Loading split Carousel code...</h1>;
+  },
+});
+const LoadableAnimalMap = Loadable({
+  loader: () => import('./AnimalMap'),
+  loading() {
+    return <h1>Loading split AnimalMap code...</h1>;
+  },
+});
+const LoadableContent = Loadable({
+  loader: () => import('./DetailsModalContent'),
+  loading() {
+    return <h1>Loading split Modal content...</h1>;
+  },
+});
 
 class Details extends React.Component {
   constructor(props) {
@@ -98,8 +121,8 @@ class Details extends React.Component {
     return (
       <div className="details">
         <h1>{name}</h1>
-        <Carousel media={media} />
-        <AnimalMap location={location} />
+        <LoadableCarousel media={media} />
+        <LoadableAnimalMap location={location} />
         <button onClick={this.toggleModal}>More Details</button>
         <div
           className="description"
@@ -108,16 +131,13 @@ class Details extends React.Component {
           }}
         ></div>
         {showModal ? (
-          <Modal key={`${id}-Modal`}>
-            <h1>
-              {name}
-              's Details
-            </h1>
-            {detailsArray}
-            <div className="buttons">
-              <button onClick={this.toggleModal}>Close</button>
-            </div>
-          </Modal>
+          <LoadableModal key={`${id}-Modal`}>
+            <LoadableContent
+              toggleModal={this.toggleModal}
+              name={name}
+              detailsArray={detailsArray}
+            />
+          </LoadableModal>
         ) : null}
       </div>
     );

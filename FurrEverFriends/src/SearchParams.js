@@ -1,6 +1,13 @@
 import React from 'react';
-import SearchBox from './SearchBox.js';
 import { navigate } from '@reach/router';
+import Loadable from 'react-loadable';
+
+const LoadableSearchBox = Loadable({
+  loader: () => import('./SearchBox'),
+  loading() {
+    return <h1>Loading split SearchBox code...</h1>;
+  },
+});
 
 class Search extends React.Component {
   search() {
@@ -9,7 +16,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-route">
-        <SearchBox search={this.search} />
+        <LoadableSearchBox search={this.search} />
       </div>
     );
   }

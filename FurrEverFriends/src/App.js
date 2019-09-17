@@ -1,13 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Results from './Results.js';
-import Details from './Details.js';
-import SearchParams from './SearchParams.js';
+import Loadable from 'react-loadable';
 import { Router, Link } from '@reach/router';
 import { Provider } from './SearchContext';
 import getUtilities from './Utilities';
 
 const utils = getUtilities();
+
+// Loading components independently
+const LoadableDetails = Loadable({
+  loader: () => import('./Details'),
+  loading() {
+    return <h1>Loading split Details code...</h1>;
+  },
+});
+const LoadableResults = Loadable({
+  loader: () => import('./Results'),
+  loading() {
+    return <h1>Loading split Results code...</h1>;
+  },
+});
+const LoadableSearchParams = Loadable({
+  loader: () => import('./SearchParams'),
+  loading() {
+    return <h1>Loading split SearchParams code...</h1>;
+  },
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -76,9 +94,9 @@ class App extends React.Component {
         <Provider value={this.state}>
           <div className="site-wrap">
             <Router>
-              <Results path="/" />
-              <Details path="details/:id" />
-              <SearchParams path="/search-params" />
+              <LoadableResults path="/" />
+              <LoadableDetails path="details/:id" />
+              <LoadableSearchParams path="/search-params" />
             </Router>
           </div>
         </Provider>
