@@ -23,7 +23,7 @@ class Search extends React.Component {
                   onChange={context.handleSpeciesChange}
                   onBlur={context.handleSpeciesChange}
                 >
-                  <option />
+                  <option value="">All Species</option>
                   {context.species.map((animalSpecies) => (
                     <option key={animalSpecies} value={animalSpecies}>
                       {animalSpecies}
@@ -40,7 +40,7 @@ class Search extends React.Component {
                   onChange={context.handleBreedChange}
                   onBlur={context.handleBreedChange}
                 >
-                  <option />
+                  <option value="">All Breeds</option> />
                   {context.breeds.map((breed) => (
                     <option value={breed} key={breed}>
                       {breed}
