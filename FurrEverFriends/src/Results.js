@@ -9,13 +9,13 @@ const utils = getUtilities();
 const LoadableAnimal = Loadable({
   loader: () => import('./Animal'),
   loading() {
-    return <h1>Loading split Animal code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 const LoadableSearchBox = Loadable({
   loader: () => import('./SearchBox'),
   loading() {
-    return <h1>Loading split SearchBox code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 
@@ -59,7 +59,7 @@ class Results extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <h1> LOADING RESULTS... </h1>;
+      return <img className="spinner" alt="" width="200px" height="200px" />;
     }
     const fetchedAnimals = [];
 

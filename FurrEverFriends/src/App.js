@@ -11,19 +11,19 @@ const utils = getUtilities();
 const LoadableDetails = Loadable({
   loader: () => import('./Details'),
   loading() {
-    return <h1>Loading split Details code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 const LoadableResults = Loadable({
   loader: () => import('./Results'),
   loading() {
-    return <h1>Loading split Results code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 const LoadableSearchParams = Loadable({
   loader: () => import('./SearchParams'),
   loading() {
-    return <h1>Loading split SearchParams code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 

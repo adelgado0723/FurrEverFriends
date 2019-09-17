@@ -45,7 +45,12 @@ header {
   color: var(--yellow);
   text-decoration: none;
 }
-
+.spinner {
+  background-image: url(Spinner.svg);
+  border: none;
+  align-self: center;
+  justify-self: center;
+}
 .site-wrap {
   width: 90vw;
   /* max-width: 1000px; */

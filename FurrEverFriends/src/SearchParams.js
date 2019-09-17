@@ -5,7 +5,7 @@ import Loadable from 'react-loadable';
 const LoadableSearchBox = Loadable({
   loader: () => import('./SearchBox'),
   loading() {
-    return <h1>Loading split SearchBox code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 

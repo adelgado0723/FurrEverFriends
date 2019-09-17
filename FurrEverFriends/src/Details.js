@@ -7,25 +7,25 @@ const utils = getUtilities();
 const LoadableModal = Loadable({
   loader: () => import('./Modal'),
   loading() {
-    return <h1>Loading split Modal code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 const LoadableCarousel = Loadable({
   loader: () => import('./Carousel'),
   loading() {
-    return <h1>Loading split Carousel code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 const LoadableAnimalMap = Loadable({
   loader: () => import('./AnimalMap'),
   loading() {
-    return <h1>Loading split AnimalMap code...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 const LoadableContent = Loadable({
   loader: () => import('./DetailsModalContent'),
   loading() {
-    return <h1>Loading split Modal content...</h1>;
+    return <img className="spinner" alt="" width="200px" height="200px" />;
   },
 });
 
@@ -46,6 +46,9 @@ class Details extends React.Component {
       description = descElement.innerHTML;
     }
     this.state = { showModal: false, description, locationState };
+  }
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   toggleModal = () => this.setState({ showModal: !this.state.showModal });
