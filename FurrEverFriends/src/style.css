@@ -472,11 +472,6 @@ header {
     grid-template-rows: auto auto;
   }
 
-  .site-wrap {
-    /* padding: 20px; */
-    display: inline;
-  }
-
   .animal {
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
@@ -540,12 +535,6 @@ header {
     grid-column: 1/2;
   }
 
-  .details .carousel #modal > div {
-    /* max-width: 90vw; */
-    /* padding: 10px; */
-    /* border-radius: 10px; */
-  }
-
   .details .description img {
     max-width: calc(90vw - 40px);
     max-height: 400px;
@@ -588,7 +577,6 @@ header {
   }
 
   .carousel .active-img-container {
-    /* width: 75vw; */
     width: calc(90vw - 80px);
   }
 
