@@ -3,29 +3,30 @@ import React from 'react';
 import getUtilities from './Utilities.js';
 
 const utils = getUtilities();
+const spinner = <img className="spinner" alt="" width="200px" height="200px" />;
 
 const LoadableModal = Loadable({
   loader: () => import('./Modal'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 const LoadableCarousel = Loadable({
   loader: () => import('./Carousel'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 const LoadableAnimalMap = Loadable({
   loader: () => import('./AnimalMap'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 const LoadableContent = Loadable({
   loader: () => import('./DetailsModalContent'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 

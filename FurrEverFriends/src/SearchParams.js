@@ -2,10 +2,12 @@ import React from 'react';
 import { navigate } from '@reach/router';
 import Loadable from 'react-loadable';
 
+const spinner = <img className="spinner" alt="" width="200px" height="200px" />;
+
 const LoadableSearchBox = Loadable({
   loader: () => import('./SearchBox'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 

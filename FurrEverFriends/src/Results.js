@@ -5,17 +5,17 @@ import Loadable from 'react-loadable';
 
 require('dotenv').config();
 const utils = getUtilities();
-
+const spinner = <img className="spinner" alt="" width="200px" height="200px" />;
 const LoadableAnimal = Loadable({
   loader: () => import('./Animal'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 const LoadableSearchBox = Loadable({
   loader: () => import('./SearchBox'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 

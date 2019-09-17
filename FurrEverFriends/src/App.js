@@ -7,23 +7,25 @@ import getUtilities from './Utilities';
 
 const utils = getUtilities();
 
+const spinner = <img className="spinner" alt="" width="200px" height="200px" />;
+
 // Loading components independently
 const LoadableDetails = Loadable({
   loader: () => import('./Details'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 const LoadableResults = Loadable({
   loader: () => import('./Results'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 const LoadableSearchParams = Loadable({
   loader: () => import('./SearchParams'),
   loading() {
-    return <img className="spinner" alt="" width="200px" height="200px" />;
+    return spinner;
   },
 });
 

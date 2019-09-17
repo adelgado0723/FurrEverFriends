@@ -45,11 +45,16 @@ header {
   color: var(--yellow);
   text-decoration: none;
 }
+.not-rendered {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
 .spinner {
   background-image: url(Spinner.svg);
   border: none;
-  align-self: center;
-  justify-self: center;
 }
 .site-wrap {
   width: 90vw;
