@@ -1,11 +1,23 @@
 import React from 'react';
-import Animal from './Animal.js';
 import getUtilities from './Utilities.js';
-import SearchBox from './SearchBox.js';
 import { Consumer } from './SearchContext.js';
+import Loadable from 'react-loadable';
 
 require('dotenv').config();
 const utils = getUtilities();
+const spinner = <img className="spinner" alt="" width="200px" height="200px" />;
+const LoadableAnimal = Loadable({
+  loader: () => import('./Animal'),
+  loading() {
+    return spinner;
+  },
+});
+const LoadableSearchBox = Loadable({
+  loader: () => import('./SearchBox'),
+  loading() {
+    return spinner;
+  },
+});
 
 class Results extends React.Component {
   constructor(props) {
@@ -47,14 +59,14 @@ class Results extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <h1> LOADING RESULTS... </h1>;
+      return <img className="spinner" alt="" width="200px" height="200px" />;
     }
     const fetchedAnimals = [];
 
     for (let id in this.state.animals) {
       const animal = this.state.animals[id];
       fetchedAnimals.push(
-        <Animal
+        <LoadableAnimal
           name={animal.animalName}
           species={animal.animalSpecies}
           breed={animal.animalBreed}
@@ -113,7 +125,7 @@ class Results extends React.Component {
         {/* <pre>
           <code>{JSON.stringify(this.state.animals, null, 2)}</code>
         </pre> */}
-        <SearchBox search={this.fetchAnimals} />
+        <LoadableSearchBox search={this.fetchAnimals} />
         <div>
           {results}
           {this.state.numAnimals ? nav : null}

@@ -1,10 +1,34 @@
+import Loadable from 'react-loadable';
 import React from 'react';
-import Carousel from './Carousel.js';
-import AnimalMap from './AnimalMap.js';
-import Modal from './Modal.js';
 import getUtilities from './Utilities.js';
 
 const utils = getUtilities();
+const spinner = <img className="spinner" alt="" width="200px" height="200px" />;
+
+const LoadableModal = Loadable({
+  loader: () => import('./Modal'),
+  loading() {
+    return spinner;
+  },
+});
+const LoadableCarousel = Loadable({
+  loader: () => import('./Carousel'),
+  loading() {
+    return spinner;
+  },
+});
+const LoadableAnimalMap = Loadable({
+  loader: () => import('./AnimalMap'),
+  loading() {
+    return spinner;
+  },
+});
+const LoadableContent = Loadable({
+  loader: () => import('./DetailsModalContent'),
+  loading() {
+    return spinner;
+  },
+});
 
 class Details extends React.Component {
   constructor(props) {
@@ -23,6 +47,9 @@ class Details extends React.Component {
       description = descElement.innerHTML;
     }
     this.state = { showModal: false, description, locationState };
+  }
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   toggleModal = () => this.setState({ showModal: !this.state.showModal });
@@ -98,8 +125,8 @@ class Details extends React.Component {
     return (
       <div className="details">
         <h1>{name}</h1>
-        <Carousel media={media} />
-        <AnimalMap location={location} />
+        <LoadableCarousel media={media} />
+        <LoadableAnimalMap location={location} />
         <button onClick={this.toggleModal}>More Details</button>
         <div
           className="description"
@@ -108,16 +135,13 @@ class Details extends React.Component {
           }}
         ></div>
         {showModal ? (
-          <Modal key={`${id}-Modal`}>
-            <h1>
-              {name}
-              's Details
-            </h1>
-            {detailsArray}
-            <div className="buttons">
-              <button onClick={this.toggleModal}>Close</button>
-            </div>
-          </Modal>
+          <LoadableModal key={`${id}-Modal`}>
+            <LoadableContent
+              toggleModal={this.toggleModal}
+              name={name}
+              detailsArray={detailsArray}
+            />
+          </LoadableModal>
         ) : null}
       </div>
     );
