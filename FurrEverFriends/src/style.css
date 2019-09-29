@@ -60,7 +60,7 @@ header {
   width: 90vw;
   /* max-width: 1000px; */
   background: white;
-  border-radius: 25px;
+  /* border-radius: 25px; */
   padding: 40px;
   padding-top: 20px;
   margin-bottom: 20px;
@@ -70,7 +70,7 @@ header {
 }
 
 .animal:hover {
-  background-color: var(--blue-hover);
+  /* background-color: var(--blue-hover); */
   color: var(--yellow-hover);
   box-shadow: 5px 5px var(--ash-grey-t);
 }
@@ -80,9 +80,10 @@ header {
   grid-gap: 15px;
   background-color: var(--blue);
   transition: all ease-in-out 120ms;
-  color: var(--yellow);
-  border: 5px solid var(--yellow);
-  border-radius: 10px;
+  /* color: var(--yellow); */
+  color: whitesmoke;
+  /* border: 5px solid var(--yellow); */
+  /* border-radius: 10px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -95,6 +96,7 @@ header {
 }
 
 .animal h1 {
+  /* color: whitesmoke; */
   white-space: nowrap;
   font-weight: normal;
   font-size: 30px;
@@ -118,7 +120,7 @@ header {
 .animal img {
   width: auto;
   height: auto;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   max-height: 200px;
 }
 
@@ -129,7 +131,7 @@ header {
 }
 
 .image-container {
-  border-radius: 20px;
+  /* border-radius: 20px; */
   width: 100%;
   height: 200px;
   float: left;
@@ -216,7 +218,7 @@ header {
   max-width: 500px;
   width: 75vw;
   padding: 15px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   text-align: center;
 }
 
@@ -232,8 +234,8 @@ header {
   grid-gap: 10px 0;
   background-color: var(--yellow);
   padding: 10px;
-  border-radius: 10px;
-  border: 5px solid var(--blue);
+  /* border-radius: 10px; */
+  /* border: 5px solid var(--blue); */
   margin-top: 15px;
 }
 
@@ -277,7 +279,7 @@ header {
   font-size: 18px;
   font-weight: bold;
   border: 3px solid var(--black);
-  border-radius: 5px;
+  /* border-radius: 5px; */
   display: block;
   margin: 0 auto;
   cursor: pointer;
@@ -329,7 +331,7 @@ header {
 .carousel .active-img-container img {
   max-width: 600px;
   max-height: 600px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 .carousel-smaller {
@@ -344,7 +346,7 @@ header {
 .carousel-smaller > img {
   width: 100px;
   height: 100px;
-  border-radius: 20%;
+  /* border-radius: 20%; */
   cursor: pointer;
   border: 2px solid var(--black);
 }
