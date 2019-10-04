@@ -5,24 +5,18 @@ exports[`snapshot 1`] = `
   className="details"
 >
   <h1 />
-  <div
-    className="carousel"
-  >
-    <div
-      className="active-img-container"
-    >
-      <img
-        alt="animal"
-        src=""
-      />
-    </div>
-    <div
-      className="carousel-smaller"
-    />
-  </div>
-  <div>
-    Loading...
-  </div>
+  <img
+    alt=""
+    className="spinner"
+    height="200px"
+    width="200px"
+  />
+  <img
+    alt=""
+    className="spinner"
+    height="200px"
+    width="200px"
+  />
   <button
     onClick={[Function]}
   >
